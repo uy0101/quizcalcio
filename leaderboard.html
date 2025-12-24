@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I Migliori Punteggi – Quiz sul Calcio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>I Migliori Punteggi</h1>
+    <nav>
+      <a href="index.html">Gioca</a>
+      <a href="leaderboard.html" class="active">I Migliori Punteggi</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <p>I migliori 5 punteggi salvati online (Google Sheets):</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Data</th>
+            <th>Giocatore</th>
+            <th>Punteggio</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+      </table>
+      <div class="actions">
+        <a class="secondary" href="index.html">Torna al gioco</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Dati caricati via JSONP dalla tua Apps Script Web App</small>
+  </footer>
+
+  <script>
+    // Sostituisci con l'URL /exec della tua Web App Apps Script
+    const API_URL = 'PASTE_EXEC_URL_HERE';
+
+    function onLeaderboardData(data) {
+      const top5 = (data.top || []).slice(0, 5);
+      const tbody = document.getElementById('leaderboard-body');
+      tbody.innerHTML = '';
+      top5.forEach((item, idx) => {
+        const dateStr = new Date(item.date).toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${idx+1}</td><td>${dateStr}</td><td>${item.name}</td><td>${item.score}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function loadLeaderboardJSONP() {
+      const s = document.createElement('script');
+      s.src = `${API_URL}?callback=onLeaderboardData&_=${Date.now()}`;
+      s.onerror = () => console.error('Errore JSONP');
+      document.body.appendChild(s);
+    }
+
+    loadLeaderboardJSONP();
+  </script>
+</body>
+</html>

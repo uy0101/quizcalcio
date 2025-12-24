@@ -3,7 +3,7 @@
 
 const STORAGE_KEY = 'quizTopScoresLocal';
 // Sostituisci con l'URL /exec della tua Web App quando sarà pronta
-const API_URL = 'PASTE_EXEC_URL_HERE';
+const API_URL = 'https://script.google.com/macros/s/AKfycbx1HdH-ItpI553s6uHVOed4oqEDFy2v2yB7dfBV4-DE7bIE2z5jG3ABcXDsKrOvxZoR/exec';
 
 let playerName = '';
 let score = 0;

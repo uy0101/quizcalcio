@@ -53,7 +53,7 @@
      window.onLeaderboardData = function(resp) {
       const top5 = (data.top || []).slice(0, 5);
       const tbody = document.getElementById('leaderboard-body');
-      console.log('2) In callback — tbody:', tbody;
+      console.log('2_ In callback — tbody:', tbody);
       if (!tbody) { console.error('tbody non trovato'); return; }
       tbody.innerHTML = '';
       top5.forEach((item, idx) => {

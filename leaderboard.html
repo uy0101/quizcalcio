@@ -18,17 +18,19 @@
   <main>
     <section class="card">
       <p>I migliori 5 punteggi salvati online (Google Sheets):</p>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Data</th>
-            <th>Giocatore</th>
-            <th>Punteggio</th>
-          </tr>
-        </thead>
-        <tbody id="leaderboard-body"></tbody>
-      </table>
+      <div id="leaderboard-wrapper" class="loading">
+        <table class="table" id="leaderboard-table >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Data</th>
+              <th>Giocatore</th>
+              <th>Punteggio</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+      </div>
       <div class="actions">
         <a class="secondary" href="index.html">Torna al gioco</a>
       </div>
@@ -38,6 +40,9 @@
   <footer>
     <small>Dati caricati via JSONP dalla tua Apps Script Web App</small>
   </footer>
+
+
+  
 
   <script>
     // Sostituisci con l'URL /exec della tua Web App Apps Script
@@ -50,17 +55,23 @@
       top5.forEach((item, idx) => {
         const dateStr = new Date(item.date).toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
         const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${idx+1}</td><td>${dateStr}</td><td>${item.name}</td><td>${item.score}</td>`;
+        tr.innerHTML = `<td>${idx+1}</td><td>${dateStr}</td><td>${item.name.slice(0, 10);}</td><td>${item.score}</td>`;
         tbody.appendChild(tr);
       });
+      // tolgo il loading
+      wrapper.classList.remove('loading');
     }
 
     function loadLeaderboardJSONP() {
       const s = document.createElement('script');
+      const wrapper = document.getElementById('leaderboard-wrapper');
+      wrapper.classList.add('loading');
       s.src = `${API_URL}?callback=onLeaderboardData&_=${Date.now()}`;
-      s.onerror = () => console.error('Errore JSONP');
+      s.onerror = () => console.error('Errore nel caricamento dei punteggi');
       document.body.appendChild(s);
     }
+     
+   
 
     loadLeaderboardJSONP();
   </script>

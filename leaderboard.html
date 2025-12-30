@@ -49,8 +49,8 @@
   <script>
     // Sostituisci con l'URL /exec della tua Web App Apps Script
     const API_URL = 'https://script.google.com/macros/s/AKfycbx1HdH-ItpI553s6uHVOed4oqEDFy2v2yB7dfBV4-DE7bIE2z5jG3ABcXDsKrOvxZoR/exec';
-
-    function onLeaderboardData  = function(resp) {
+    
+     window.onLeaderboardData = function(resp) {
       const top5 = (data.top || []).slice(0, 5);
       const tbody = document.getElementById('leaderboard-body');
       console.log('2) In callback — tbody:', tbody;

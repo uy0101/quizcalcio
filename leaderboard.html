@@ -55,7 +55,7 @@
       top5.forEach((item, idx) => {
         const dateStr = new Date(item.date).toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
         const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${idx+1}</td><td>${dateStr}</td><td>${item.name.slice(0,10)}</td><td>${item.score}</td>`;
+        tr.innerHTML = `<td>${idx+1}</td><td>${dateStr}</td><td>${item.name.slice(0, 10)}</td><td>${item.score}</td>`;
         tbody.appendChild(tr);
       });
       // tolgo il loading

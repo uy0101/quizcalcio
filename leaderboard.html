@@ -75,9 +75,10 @@
       console.log('3) Prima di JSONP: inietto script…');
       s.src = `${API_URL}?callback=onLeaderboardData&_=${Date.now()}`;
       s.onerror = () => console.error('Errore nel caricamento dei punteggi');
-      document.body.appendChild(s);
-            // tolgo il loading
+                  // tolgo il loading
       wrapper.classList.remove('loading');
+      document.body.appendChild(s);
+
     }
      
    

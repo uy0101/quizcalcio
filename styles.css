@@ -46,7 +46,3 @@ main{max-width:960px;margin:24px auto;padding:0 16px;} .card{background:var(--ca
   to { transform: rotate(360deg); }
 }
 
-/* opzionale: cursore di attesa sulla tabella */
-#leaderboard-wrapper.loading {
-  cursor: progress;
-}

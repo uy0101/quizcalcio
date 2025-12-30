@@ -17,7 +17,7 @@
 
   <main>
     <section class="card">
-      <p>I migliori 5 punteggi:</p>
+      <p>I migliori 10 giocatori:</p>
       <div id="leaderboard-wrapper" class="loading">
         <table class="table" id="leaderboard-table >
           <thead>
@@ -51,12 +51,12 @@
     const API_URL = 'https://script.google.com/macros/s/AKfycbx1HdH-ItpI553s6uHVOed4oqEDFy2v2yB7dfBV4-DE7bIE2z5jG3ABcXDsKrOvxZoR/exec';
     
      window.onLeaderboardData = function(resp) {
-      const top5 = (data.top || []).slice(0, 5);
+      const top10 = (resp.top || []).slice(0, 10);
       const tbody = document.getElementById('leaderboard-body');
       console.log('2_ In callback — tbody:', tbody);
       if (!tbody) { console.error('tbody non trovato'); return; }
       tbody.innerHTML = '';
-      top5.forEach((item, idx) => {
+      top10.forEach((item, idx) => {
         const dateStr = new Date(item.date).toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
         const tr = document.createElement('tr');
         tr.innerHTML = `<td>${idx+1}</td><td>${dateStr}</td><td>${item.name.slice(0, 10)}</td><td>${item.score}</td>`;

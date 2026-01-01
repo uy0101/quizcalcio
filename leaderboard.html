@@ -70,21 +70,23 @@
 
     function loadLeaderboardJSONP() {
       const s = document.createElement('script');
-      const wrapper = document.getElementById('leaderboard-wrapper');
-      wrapper.classList.add('loading');
+      
       console.log('3) Prima di JSONP: inietto script…');
       s.src = `${API_URL}?callback=onLeaderboardData&_=${Date.now()}`;
       s.onerror = () => console.error('Errore nel caricamento dei punteggi');
-                  // tolgo il loading
-      
+            
       document.body.appendChild(s);
-      wrapper.classList.remove('loading');
+      
+
      
     }
      
    
-
+    const wrapper = document.getElementById('leaderboard-wrapper');
+    wrapper.classList.add('loading');
     loadLeaderboardJSONP();
+    console.log('3b) tolgo loading');
+    wrapper.classList.remove('loading');
   </script>
 </body>
 </html>

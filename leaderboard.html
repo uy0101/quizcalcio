@@ -65,7 +65,8 @@
         tr.innerHTML = `<td>${idx+1}</td><td>${dateStr}</td><td>${item.name.slice(0, 10)}</td><td>${item.score}</td>`;
         tbody.appendChild(tr);
       });
-
+      console.log('3b) tolgo loading');
+      wrapper.classList.remove('loading');
     }
 
     function loadLeaderboardJSONP() {
@@ -75,18 +76,14 @@
       s.src = `${API_URL}?callback=onLeaderboardData&_=${Date.now()}`;
       s.onerror = () => console.error('Errore nel caricamento dei punteggi');
             
-      document.body.appendChild(s);
-      
-
-     
+      document.body.appendChild(s);         
     }
      
    
     const wrapper = document.getElementById('leaderboard-wrapper');
     wrapper.classList.add('loading');
     loadLeaderboardJSONP();
-    console.log('3b) tolgo loading');
-    wrapper.classList.remove('loading');
+
   </script>
 </body>
 </html>

@@ -1,9468 +1,5502 @@
-
-// questions.js — pool statico di 500 domande (60% Serie A, 20% UEFA, 10% Nazionale, 10% Regole)
-// Difficoltà: 1–100=facile, 101–200=media, 201–300=difficile, 301–500=solo per appassionati
-// Fonti ufficiali:
-// - Lega Serie A (Albo d'Oro): https://static.legaseriea.it/it/serie-a/albo
-// - Lega Serie A (Top Scorers 23/24): https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib
-// - Lega Serie A (Higuain 36 gol 2015/16): https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato
-// - Lega Serie A (Osimhen capocannoniere 22/23): https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf
-// - UEFA (Champions League winners): https://www.uefa.com/uefachampionsleague/history/winners/
-// - FIGC (Palmarès Nazionale): https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia
-// - IFAB Laws of the Game (regole): https://www.theifab.com/laws-of-the-game/
-
-const QUESTIONS = 
-[
+const QUESTIONS_POOL = [
   {
-    "id": 1,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Genoa?",
-    "choices": [
-      "8",
-      "11",
-      "9",
-      "10"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 2,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 3,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
-      "21",
-      "19",
-      "20",
-      "18"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 4,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 5,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Juventus?",
-    "choices": [
-      "36",
-      "37",
+    "question": "Quanti Scudetti ha vinto la Juventus?",
+    "options": [
       "35",
+      "36",
+      "38",
+      "37"
+    ],
+    "correctIndex": 1,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti conta la Juventus?",
+    "options": [
+      "37",
+      "38",
+      "36",
+      "35"
+    ],
+    "correctIndex": 2,
+    "difficulty": 1
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi la Juventus?",
+    "options": [
+      "38",
+      "36",
+      "35",
+      "37"
+    ],
+    "correctIndex": 1,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il numero di Scudetti di la Juventus?",
+    "options": [
+      "38",
+      "35",
+      "36",
+      "37"
+    ],
+    "correctIndex": 2,
+    "difficulty": 1
+  },
+  {
+    "question": "Indica il totale di Scudetti di la Juventus.",
+    "options": [
+      "38",
+      "36",
+      "35",
+      "37"
+    ],
+    "correctIndex": 1,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha la Juventus?",
+    "options": [
+      "36",
+      "35",
+      "37",
       "38"
     ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 1
   },
   {
-    "id": 6,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Bologna?",
-    "choices": [
-      "6",
-      "9",
-      "7",
-      "8"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 7,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Hellas Verona?",
-    "choices": [
-      "1",
-      "3",
-      "0",
-      "2"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 8,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 9,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 10,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "4",
-      "5",
-      "3",
-      "6"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 11,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Sampdoria?",
-    "choices": [
-      "3",
-      "1",
-      "0",
-      "2"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 12,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 13,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Milan",
-      "Fiorentina",
-      "Torino"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 14,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 1,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 15,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 16,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 1,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 17,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Cristiano Ronaldo (29)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 18,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 19,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Novese",
-      "Juventus",
-      "Bologna",
-      "Cagliari"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 20,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Genoa",
-      "Hellas Verona",
-      "Roma"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 21,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Milan",
-      "Roma",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 22,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Sampdoria",
-      "Torino",
-      "Juventus",
-      "Genoa"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 23,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Ciro Immobile (27)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 24,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Cagliari?",
-    "choices": [
-      "2",
-      "0",
-      "3",
-      "1"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 25,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Casale",
-      "Bologna",
-      "Juventus",
-      "Torino"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 26,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Juventus",
-      "Torino",
-      "Napoli"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 27,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Bologna",
-      "Novese",
-      "Juventus",
-      "Sampdoria"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 28,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 29,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Lazio",
-      "Cagliari",
-      "Juventus",
-      "Sampdoria"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 30,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Hellas Verona?",
-    "choices": [
-      "1",
-      "3",
-      "0",
-      "2"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 31,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
-      "18",
-      "19",
-      "20",
-      "21"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 32,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 33,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Napoli",
-      "Milan",
-      "Bologna",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 34,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Novese",
-      "Milan",
-      "Napoli",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 35,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Roma?",
-    "choices": [
-      "3",
-      "2",
-      "4",
-      "5"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 36,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Juventus?",
-    "choices": [
+    "question": "Qual è il computo degli Scudetti di la Juventus?",
+    "options": [
       "35",
-      "38",
       "37",
+      "38",
       "36"
     ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 37,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Casale",
-      "Roma",
-      "Bologna",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 38,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Bologna?",
-    "choices": [
-      "8",
-      "9",
-      "7",
-      "6"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 39,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Juventus?",
-    "choices": [
-      "38",
-      "36",
-      "35",
-      "37"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 40,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Roma?",
-    "choices": [
-      "4",
-      "5",
-      "2",
-      "3"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 41,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Novese?",
-    "choices": [
-      "1",
-      "2",
-      "3",
-      "0"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 42,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Lazio?",
-    "choices": [
-      "4",
-      "3",
-      "2",
-      "1"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 43,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Bologna",
-      "Roma",
-      "Hellas Verona",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 44,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)"
-    ],
-    "answerIndex": 1,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 45,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Roma?",
-    "choices": [
-      "2",
-      "4",
-      "3",
-      "5"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 46,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Hellas Verona",
-      "Roma",
-      "Juventus",
-      "Inter"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 47,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Ciro Immobile (27)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 48,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Inter",
-      "Torino",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 49,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
-      "18",
-      "21",
-      "19",
-      "20"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 50,
-    "difficulty": 1,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Bologna?",
-    "choices": [
-      "8",
-      "6",
-      "9",
-      "7"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 51,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Lazio",
-      "Cagliari",
-      "Genoa"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 52,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 53,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 54,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Pro Vercelli",
-      "Juventus",
-      "Napoli",
-      "Fiorentina"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 55,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Bologna?",
-    "choices": [
-      "8",
-      "7",
-      "9",
-      "6"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 56,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Pro Vercelli?",
-    "choices": [
-      "7",
-      "8",
-      "6",
-      "9"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 57,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Lazio",
-      "Torino",
-      "Juventus",
-      "Milan"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 58,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Fiorentina",
-      "Lazio",
-      "Bologna",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 59,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Cagliari",
-      "Casale",
-      "Juventus",
-      "Milan"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 60,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Sampdoria?",
-    "choices": [
-      "0",
-      "3",
-      "2",
-      "1"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 61,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Juventus?",
-    "choices": [
+    "question": "Quanti Scudetti risultano in bacheca per la Juventus?",
+    "options": [
       "38",
       "37",
+      "35",
+      "36"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da la Juventus?",
+    "options": [
+      "37",
+      "38",
       "36",
       "35"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 1
   },
   {
-    "id": 62,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "3",
-      "4",
-      "5",
-      "6"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 63,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Bologna",
-      "Juventus",
-      "Napoli",
-      "Lazio"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 64,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 65,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Torino",
-      "Juventus",
-      "Genoa",
-      "Cagliari"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 66,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Cagliari?",
-    "choices": [
-      "1",
-      "0",
-      "3",
-      "2"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 67,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Juventus",
-      "Genoa",
-      "Sampdoria"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 68,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Novese?",
-    "choices": [
-      "1",
-      "3",
-      "0",
-      "2"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 69,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 70,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Torino",
-      "Pro Vercelli",
-      "Napoli"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 71,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 72,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Fiorentina",
-      "Inter",
-      "Novese",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 73,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Bologna",
-      "Napoli",
-      "Pro Vercelli",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 74,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Fiorentina",
-      "Casale",
-      "Juventus",
-      "Cagliari"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 75,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 76,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 77,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 78,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Cagliari",
-      "Juventus",
-      "Napoli"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 79,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Napoli",
-      "Lazio",
-      "Juventus",
-      "Cagliari"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 80,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 81,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 82,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Novese?",
-    "choices": [
-      "1",
-      "2",
-      "0",
-      "3"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 83,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Hellas Verona",
-      "Juventus",
-      "Cagliari",
-      "Casale"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 84,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 85,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 1,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 86,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Napoli",
-      "Pro Vercelli",
-      "Casale",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 87,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Pro Vercelli",
-      "Juventus",
-      "Genoa"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 88,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Genoa",
-      "Sampdoria",
-      "Pro Vercelli"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 89,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 90,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 91,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Fiorentina?",
-    "choices": [
-      "3",
-      "1",
-      "2",
-      "4"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 92,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 93,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 94,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 95,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 96,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Juventus?",
-    "choices": [
-      "38",
-      "35",
-      "36",
-      "37"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 97,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Sampdoria",
-      "Juventus",
-      "Pro Vercelli",
-      "Roma"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 98,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Bologna",
-      "Napoli",
-      "Genoa"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 99,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Lazio",
-      "Inter",
-      "Fiorentina",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 100,
-    "difficulty": 2,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Roma?",
-    "choices": [
-      "5",
-      "2",
-      "4",
-      "3"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 101,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Lazio?",
-    "choices": [
-      "1",
-      "4",
-      "2",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 102,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 103,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Novese",
-      "Sampdoria",
-      "Juventus",
-      "Napoli"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 104,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Fiorentina",
-      "Inter",
-      "Torino",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 105,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Juventus",
-      "Cagliari",
-      "Casale"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 106,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 107,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Casale",
-      "Juventus",
-      "Inter",
-      "Sampdoria"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 108,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 109,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Roma",
-      "Fiorentina",
-      "Torino",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 110,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "6",
-      "5",
-      "4",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 111,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Pro Vercelli?",
-    "choices": [
-      "6",
-      "9",
-      "7",
-      "8"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 112,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Roma?",
-    "choices": [
-      "3",
-      "5",
-      "4",
-      "2"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 113,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Torino?",
-    "choices": [
-      "6",
-      "8",
-      "9",
-      "7"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 114,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Sampdoria?",
-    "choices": [
-      "0",
-      "3",
-      "1",
-      "2"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 115,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Roma?",
-    "choices": [
-      "3",
-      "5",
-      "4",
-      "2"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 116,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 117,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 118,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Napoli",
-      "Genoa",
-      "Bologna"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 119,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 120,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Bologna",
-      "Fiorentina",
-      "Inter",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 121,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Torino",
-      "Novese",
-      "Napoli",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 122,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Sampdoria?",
-    "choices": [
-      "2",
-      "3",
-      "1",
-      "0"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 123,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "4",
-      "3",
-      "6",
-      "5"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 124,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Casale",
-      "Hellas Verona",
-      "Milan"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 125,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Juventus?",
-    "choices": [
+    "question": "Quanti Scudetti ufficiali ha conquistato la Juventus?",
+    "options": [
       "36",
       "38",
       "37",
       "35"
     ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 1
   },
   {
-    "id": 126,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
-      "18",
-      "20",
-      "21",
-      "19"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 127,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Cagliari",
-      "Fiorentina",
-      "Bologna"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 128,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 129,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Milan",
-      "Napoli",
-      "Juventus",
-      "Genoa"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 130,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Cagliari",
-      "Casale",
-      "Bologna",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 131,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Casale?",
-    "choices": [
-      "1",
-      "0",
-      "3",
-      "2"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 132,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 133,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 134,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 135,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Torino",
-      "Juventus",
-      "Inter",
-      "Roma"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 136,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 137,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 138,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
-  },
-  {
-    "id": 139,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Inter?",
-    "choices": [
+    "question": "Quanti Scudetti ha vinto l'Inter?",
+    "options": [
       "22",
       "20",
       "19",
       "21"
     ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 1
   },
   {
-    "id": 140,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
+    "question": "Quanti Scudetti conta l'Inter?",
+    "options": [
+      "21",
+      "22",
+      "19",
+      "20"
     ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 141,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)"
+    "question": "Di quanti Scudetti può fregiarsi l'Inter?",
+    "options": [
+      "20",
+      "19",
+      "21",
+      "22"
     ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 1
   },
   {
-    "id": 142,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)"
+    "question": "Qual è il numero di Scudetti di l'Inter?",
+    "options": [
+      "22",
+      "19",
+      "21",
+      "20"
     ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 143,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Roma",
-      "Juventus",
-      "Milan",
-      "Casale"
+    "question": "Indica il totale di Scudetti di l'Inter.",
+    "options": [
+      "21",
+      "19",
+      "22",
+      "20"
     ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 144,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Pro Vercelli",
-      "Inter",
-      "Cagliari"
+    "question": "Quanti titoli nazionali (Scudetti) ha l'Inter?",
+    "options": [
+      "21",
+      "22",
+      "20",
+      "19"
     ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 1
   },
   {
-    "id": 145,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Napoli",
-      "Juventus",
-      "Novese",
-      "Lazio"
+    "question": "Qual è il computo degli Scudetti di l'Inter?",
+    "options": [
+      "22",
+      "19",
+      "21",
+      "20"
     ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 146,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Hellas Verona?",
-    "choices": [
-      "3",
-      "2",
-      "1",
-      "0"
+    "question": "Quanti Scudetti risultano in bacheca per l'Inter?",
+    "options": [
+      "20",
+      "19",
+      "21",
+      "22"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 1
   },
   {
-    "id": 147,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Casale?",
-    "choices": [
-      "2",
-      "1",
-      "0",
-      "3"
+    "question": "Qual è il totale degli Scudetti vinti da l'Inter?",
+    "options": [
+      "19",
+      "21",
+      "20",
+      "22"
     ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 1
   },
   {
-    "id": 148,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)"
+    "question": "Quanti Scudetti ufficiali ha conquistato l'Inter?",
+    "options": [
+      "19",
+      "22",
+      "21",
+      "20"
     ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "facile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 149,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Juventus",
-      "Genoa",
-      "Bologna"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 150,
-    "difficulty": 3,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Sampdoria",
-      "Pro Vercelli",
-      "Hellas Verona",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "facile"
-    ]
-  },
-  {
-    "id": 151,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Lazio",
-      "Juventus",
-      "Napoli",
-      "Torino"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 152,
-    "difficulty": 4,
-    "category": "Serie A",
     "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
+    "options": [
+      "18",
+      "20",
+      "21",
+      "19"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti conta il Milan?",
+    "options": [
+      "19",
+      "20",
+      "18",
+      "21"
+    ],
+    "correctIndex": 0,
+    "difficulty": 1
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi il Milan?",
+    "options": [
+      "21",
+      "18",
+      "20",
+      "19"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il numero di Scudetti di il Milan?",
+    "options": [
+      "20",
+      "21",
+      "18",
+      "19"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Indica il totale di Scudetti di il Milan.",
+    "options": [
+      "18",
+      "19",
+      "20",
+      "21"
+    ],
+    "correctIndex": 1,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha il Milan?",
+    "options": [
+      "20",
+      "21",
+      "19",
+      "18"
+    ],
+    "correctIndex": 2,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di il Milan?",
+    "options": [
+      "19",
+      "21",
+      "18",
+      "20"
+    ],
+    "correctIndex": 0,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per il Milan?",
+    "options": [
+      "19",
+      "20",
+      "21",
+      "18"
+    ],
+    "correctIndex": 0,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da il Milan?",
+    "options": [
       "18",
       "21",
       "19",
       "20"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 2,
+    "difficulty": 1
   },
   {
-    "id": 153,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Cagliari?",
-    "choices": [
-      "3",
-      "0",
-      "1",
-      "2"
+    "question": "Quanti Scudetti ufficiali ha conquistato il Milan?",
+    "options": [
+      "21",
+      "19",
+      "18",
+      "20"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 1,
+    "difficulty": 1
   },
   {
-    "id": 154,
-    "difficulty": 4,
-    "category": "Serie A",
     "question": "Quanti Scudetti ha vinto il Genoa?",
-    "choices": [
-      "9",
+    "options": [
       "10",
       "11",
-      "8"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 155,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
-      "18",
-      "19",
-      "20",
-      "21"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 156,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 157,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 158,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Lazio",
-      "Casale",
-      "Bologna"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 159,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 160,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Sampdoria",
-      "Juventus",
-      "Milan",
-      "Fiorentina"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 161,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Torino",
-      "Inter",
-      "Lazio",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 162,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Roma",
-      "Bologna",
-      "Inter"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 163,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Lazio",
-      "Roma",
-      "Casale",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 164,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Inter?",
-    "choices": [
-      "21",
-      "19",
-      "22",
-      "20"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 165,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Napoli",
-      "Cagliari",
-      "Hellas Verona"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 166,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "3",
-      "6",
-      "5",
-      "4"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 167,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 168,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 169,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Casale?",
-    "choices": [
-      "2",
-      "0",
-      "1",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 170,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 171,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 172,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 173,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 174,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Hellas Verona",
-      "Bologna",
-      "Inter",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 175,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Lazio?",
-    "choices": [
-      "3",
-      "2",
-      "4",
-      "1"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 176,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 177,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 178,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Inter?",
-    "choices": [
-      "21",
-      "19",
-      "22",
-      "20"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 179,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 180,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Hellas Verona",
-      "Juventus",
-      "Fiorentina"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 181,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Roma",
-      "Milan",
-      "Bologna",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 182,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "5",
-      "3",
-      "6",
-      "4"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 183,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 184,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 185,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Casale?",
-    "choices": [
-      "1",
-      "3",
-      "2",
-      "0"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 186,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Inter?",
-    "choices": [
-      "20",
-      "22",
-      "19",
-      "21"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 187,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 188,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Casale",
-      "Milan",
-      "Genoa",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 189,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Sampdoria",
-      "Milan",
-      "Fiorentina"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 190,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 191,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 192,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 193,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 194,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 195,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Fiorentina",
-      "Cagliari",
-      "Novese"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 196,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Fiorentina?",
-    "choices": [
-      "2",
-      "1",
-      "3",
-      "4"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 197,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 198,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 199,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Fiorentina",
-      "Roma",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 200,
-    "difficulty": 4,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 201,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "3",
-      "6",
-      "5",
-      "4"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 202,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "6",
-      "5",
-      "3",
-      "4"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 203,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Novese?",
-    "choices": [
-      "3",
-      "2",
-      "1",
-      "0"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 204,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 205,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Inter?",
-    "choices": [
-      "22",
-      "20",
-      "21",
-      "19"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 206,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Bologna",
-      "Fiorentina",
-      "Milan"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 207,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Cristiano Ronaldo (29)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 208,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 209,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 210,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Torino?",
-    "choices": [
       "8",
-      "7",
-      "6",
       "9"
     ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 211,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Casale",
-      "Juventus",
-      "Cagliari",
-      "Novese"
+    "question": "Quanti Scudetti conta il Genoa?",
+    "options": [
+      "10",
+      "9",
+      "11",
+      "8"
     ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 1,
+    "difficulty": 1
   },
   {
-    "id": 212,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)"
+    "question": "Di quanti Scudetti può fregiarsi il Genoa?",
+    "options": [
+      "8",
+      "10",
+      "11",
+      "9"
     ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 213,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Napoli?",
-    "choices": [
-      "5",
-      "3",
-      "4",
-      "6"
+    "question": "Qual è il numero di Scudetti di il Genoa?",
+    "options": [
+      "8",
+      "10",
+      "11",
+      "9"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 3,
+    "difficulty": 1
   },
   {
-    "id": 214,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Cagliari",
-      "Inter",
-      "Pro Vercelli",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 215,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Bologna?",
-    "choices": [
-      "7",
-      "6",
+    "question": "Indica il totale di Scudetti di il Genoa.",
+    "options": [
+      "11",
+      "10",
       "9",
       "8"
     ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 2,
+    "difficulty": 1
   },
   {
-    "id": 216,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 217,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Milan",
-      "Juventus",
-      "Torino",
-      "Cagliari"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 218,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Napoli",
-      "Casale",
-      "Novese"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 219,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Fiorentina",
-      "Roma",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 220,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 221,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Sampdoria?",
-    "choices": [
-      "0",
-      "3",
-      "1",
-      "2"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 222,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 223,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Casale",
-      "Pro Vercelli",
-      "Genoa"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 224,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Fiorentina?",
-    "choices": [
-      "1",
-      "4",
-      "2",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 225,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Milan",
-      "Hellas Verona",
-      "Juventus",
-      "Novese"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 226,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Hellas Verona?",
-    "choices": [
-      "0",
-      "2",
-      "1",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 227,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 228,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Hellas Verona?",
-    "choices": [
-      "3",
-      "0",
-      "1",
-      "2"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 229,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Juventus",
-      "Sampdoria",
-      "Cagliari"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 230,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Casale",
-      "Napoli",
-      "Pro Vercelli"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 231,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Torino",
-      "Casale",
-      "Juventus",
-      "Sampdoria"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 232,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Lazio",
-      "Inter",
-      "Juventus",
-      "Milan"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 233,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Torino?",
-    "choices": [
-      "6",
-      "8",
-      "7",
-      "9"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 234,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Inter?",
-    "choices": [
-      "21",
-      "19",
-      "22",
-      "20"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 235,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 236,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Sampdoria?",
-    "choices": [
-      "1",
-      "0",
-      "2",
-      "3"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 237,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Juventus?",
-    "choices": [
-      "35",
-      "37",
-      "36",
-      "38"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 238,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 239,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Bologna?",
-    "choices": [
-      "7",
+    "question": "Quanti titoli nazionali (Scudetti) ha il Genoa?",
+    "options": [
+      "11",
+      "10",
       "9",
+      "8"
+    ],
+    "correctIndex": 2,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di il Genoa?",
+    "options": [
+      "9",
+      "10",
       "8",
-      "6"
+      "11"
     ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 0,
+    "difficulty": 1
   },
   {
-    "id": 240,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Novese",
-      "Sampdoria",
-      "Fiorentina"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 241,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 242,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 243,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 244,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Ciro Immobile (27)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 245,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Torino",
-      "Fiorentina",
-      "Juventus",
-      "Novese"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 246,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Casale",
-      "Novese",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 247,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 248,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
-      "19",
-      "21",
-      "18",
-      "20"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 249,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Roma?",
-    "choices": [
-      "5",
-      "4",
-      "3",
-      "2"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 250,
-    "difficulty": 5,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Cagliari",
-      "Bologna",
-      "Roma"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 251,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 252,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Pro Vercelli",
-      "Juventus",
-      "Lazio",
-      "Hellas Verona"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 253,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Casale?",
-    "choices": [
-      "2",
-      "1",
-      "3",
-      "0"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 254,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Novese",
-      "Bologna",
-      "Inter"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 255,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 256,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Hellas Verona",
-      "Roma",
-      "Torino"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 257,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Ciro Immobile (27)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 1,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 258,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 259,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Genoa?",
-    "choices": [
+    "question": "Quanti Scudetti risultano in bacheca per il Genoa?",
+    "options": [
       "8",
       "11",
+      "10",
+      "9"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da il Genoa?",
+    "options": [
+      "11",
+      "10",
+      "8",
+      "9"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato il Genoa?",
+    "options": [
+      "10",
+      "8",
+      "11",
+      "9"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti ha vinto il Bologna?",
+    "options": [
+      "8",
+      "6",
+      "7",
+      "9"
+    ],
+    "correctIndex": 2,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti conta il Bologna?",
+    "options": [
+      "7",
+      "8",
       "9",
-      "10"
+      "6"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 0,
+    "difficulty": 1
   },
   {
-    "id": 260,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Pro Vercelli",
-      "Sampdoria",
-      "Juventus",
-      "Hellas Verona"
+    "question": "Di quanti Scudetti può fregiarsi il Bologna?",
+    "options": [
+      "8",
+      "7",
+      "9",
+      "6"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 1,
+    "difficulty": 1
   },
   {
-    "id": 261,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Roma",
-      "Sampdoria",
-      "Inter",
-      "Juventus"
+    "question": "Qual è il numero di Scudetti di il Bologna?",
+    "options": [
+      "7",
+      "6",
+      "8",
+      "9"
     ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 0,
+    "difficulty": 1
   },
   {
-    "id": 262,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Fiorentina?",
-    "choices": [
-      "1",
+    "question": "Indica il totale di Scudetti di il Bologna.",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha il Bologna?",
+    "options": [
+      "7",
+      "9",
+      "8",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di il Bologna?",
+    "options": [
+      "6",
+      "7",
+      "9",
+      "8"
+    ],
+    "correctIndex": 1,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per il Bologna?",
+    "options": [
+      "8",
+      "9",
+      "6",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 1
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da il Bologna?",
+    "options": [
+      "7",
+      "9",
+      "6",
+      "8"
+    ],
+    "correctIndex": 0,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato il Bologna?",
+    "options": [
+      "6",
+      "8",
+      "7",
+      "9"
+    ],
+    "correctIndex": 2,
+    "difficulty": 1
+  },
+  {
+    "question": "Quanti Scudetti ha vinto il Torino?",
+    "options": [
+      "9",
+      "6",
+      "8",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti conta il Torino?",
+    "options": [
+      "6",
+      "7",
+      "9",
+      "8"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi il Torino?",
+    "options": [
+      "8",
+      "9",
+      "6",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il numero di Scudetti di il Torino?",
+    "options": [
+      "8",
+      "6",
+      "7",
+      "9"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Indica il totale di Scudetti di il Torino.",
+    "options": [
+      "7",
+      "9",
+      "6",
+      "8"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha il Torino?",
+    "options": [
+      "8",
+      "9",
+      "7",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di il Torino?",
+    "options": [
+      "8",
+      "9",
+      "6",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per il Torino?",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da il Torino?",
+    "options": [
+      "9",
+      "6",
+      "8",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato il Torino?",
+    "options": [
+      "9",
+      "8",
+      "6",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ha vinto la Pro Vercelli?",
+    "options": [
+      "7",
+      "6",
+      "8",
+      "9"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti conta la Pro Vercelli?",
+    "options": [
+      "9",
+      "7",
+      "8",
+      "6"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi la Pro Vercelli?",
+    "options": [
+      "9",
+      "8",
+      "7",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il numero di Scudetti di la Pro Vercelli?",
+    "options": [
+      "9",
+      "6",
+      "7",
+      "8"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Indica il totale di Scudetti di la Pro Vercelli.",
+    "options": [
+      "7",
+      "9",
+      "8",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha la Pro Vercelli?",
+    "options": [
+      "9",
+      "8",
+      "7",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di la Pro Vercelli?",
+    "options": [
+      "9",
+      "8",
+      "6",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per la Pro Vercelli?",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da la Pro Vercelli?",
+    "options": [
+      "8",
+      "9",
+      "7",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato la Pro Vercelli?",
+    "options": [
+      "8",
+      "9",
+      "6",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ha vinto il Napoli?",
+    "options": [
+      "6",
+      "3",
       "4",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti conta il Napoli?",
+    "options": [
+      "5",
+      "3",
+      "6",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi il Napoli?",
+    "options": [
+      "6",
+      "3",
+      "5",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il numero di Scudetti di il Napoli?",
+    "options": [
+      "6",
+      "4",
+      "5",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Indica il totale di Scudetti di il Napoli.",
+    "options": [
+      "6",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha il Napoli?",
+    "options": [
+      "3",
+      "6",
+      "4",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di il Napoli?",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per il Napoli?",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da il Napoli?",
+    "options": [
+      "6",
+      "5",
+      "3",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato il Napoli?",
+    "options": [
+      "4",
+      "6",
+      "5",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ha vinto la Roma?",
+    "options": [
+      "4",
+      "2",
+      "5",
+      "3"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti conta la Roma?",
+    "options": [
+      "5",
+      "3",
+      "4",
+      "2"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi la Roma?",
+    "options": [
+      "2",
+      "4",
+      "5",
+      "3"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il numero di Scudetti di la Roma?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Indica il totale di Scudetti di la Roma.",
+    "options": [
+      "5",
+      "3",
+      "2",
+      "4"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha la Roma?",
+    "options": [
+      "2",
+      "5",
+      "4",
+      "3"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di la Roma?",
+    "options": [
+      "2",
+      "5",
+      "3",
+      "4"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per la Roma?",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "5"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da la Roma?",
+    "options": [
+      "4",
+      "2",
+      "3",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato la Roma?",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "2"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ha vinto la Lazio?",
+    "options": [
+      "3",
+      "4",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti conta la Lazio?",
+    "options": [
+      "3",
+      "1",
+      "2",
+      "4"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi la Lazio?",
+    "options": [
+      "4",
+      "1",
       "2",
       "3"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 2,
+    "difficulty": 2
   },
   {
-    "id": 263,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Casale",
-      "Inter",
-      "Juventus",
-      "Napoli"
+    "question": "Qual è il numero di Scudetti di la Lazio?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 1,
+    "difficulty": 2
   },
   {
-    "id": 264,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Hellas Verona?",
-    "choices": [
+    "question": "Indica il totale di Scudetti di la Lazio.",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha la Lazio?",
+    "options": [
+      "3",
+      "4",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di la Lazio?",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per la Lazio?",
+    "options": [
+      "3",
+      "1",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 2
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da la Lazio?",
+    "options": [
+      "4",
+      "1",
+      "2",
+      "3"
+    ],
+    "correctIndex": 2,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato la Lazio?",
+    "options": [
+      "3",
+      "2",
+      "1",
+      "4"
+    ],
+    "correctIndex": 1,
+    "difficulty": 2
+  },
+  {
+    "question": "Quanti Scudetti ha vinto la Fiorentina?",
+    "options": [
+      "4",
+      "1",
+      "2",
+      "3"
+    ],
+    "correctIndex": 2,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti conta la Fiorentina?",
+    "options": [
+      "1",
+      "4",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi la Fiorentina?",
+    "options": [
+      "2",
+      "4",
+      "1",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il numero di Scudetti di la Fiorentina?",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Indica il totale di Scudetti di la Fiorentina.",
+    "options": [
+      "2",
+      "4",
+      "3",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha la Fiorentina?",
+    "options": [
+      "1",
+      "3",
+      "2",
+      "4"
+    ],
+    "correctIndex": 2,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di la Fiorentina?",
+    "options": [
+      "3",
+      "1",
+      "2",
+      "4"
+    ],
+    "correctIndex": 2,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per la Fiorentina?",
+    "options": [
+      "4",
+      "2",
+      "3",
+      "1"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da la Fiorentina?",
+    "options": [
+      "3",
+      "4",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato la Fiorentina?",
+    "options": [
+      "3",
+      "1",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti ha vinto la Sampdoria?",
+    "options": [
+      "2",
+      "1",
+      "0",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti conta la Sampdoria?",
+    "options": [
+      "1",
+      "0",
+      "3",
+      "2"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi la Sampdoria?",
+    "options": [
+      "2",
+      "1",
+      "0",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il numero di Scudetti di la Sampdoria?",
+    "options": [
+      "2",
+      "0",
+      "1",
+      "3"
+    ],
+    "correctIndex": 2,
+    "difficulty": 3
+  },
+  {
+    "question": "Indica il totale di Scudetti di la Sampdoria.",
+    "options": [
+      "3",
+      "1",
+      "0",
+      "2"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha la Sampdoria?",
+    "options": [
+      "0",
+      "2",
+      "1",
+      "3"
+    ],
+    "correctIndex": 2,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di la Sampdoria?",
+    "options": [
+      "0",
+      "2",
+      "3",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per la Sampdoria?",
+    "options": [
+      "1",
+      "0",
+      "2",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da la Sampdoria?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato la Sampdoria?",
+    "options": [
+      "2",
+      "1",
+      "0",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti ha vinto l'Hellas Verona?",
+    "options": [
       "1",
       "2",
       "3",
       "0"
     ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 0,
+    "difficulty": 3
   },
   {
-    "id": 265,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Hellas Verona?",
-    "choices": [
-      "2",
+    "question": "Quanti Scudetti conta l'Hellas Verona?",
+    "options": [
       "3",
+      "2",
       "1",
       "0"
     ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 2,
+    "difficulty": 3
   },
   {
-    "id": 266,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 267,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Bologna",
-      "Juventus",
-      "Milan",
-      "Fiorentina"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 268,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Lazio",
-      "Juventus",
-      "Inter",
-      "Fiorentina"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 269,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Juventus",
-      "Napoli",
-      "Cagliari",
-      "Sampdoria"
-    ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 270,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Cristiano Ronaldo (29)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 3,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 271,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Casale",
-      "Juventus",
-      "Pro Vercelli",
-      "Novese"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 272,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Cagliari?",
-    "choices": [
-      "2",
-      "1",
-      "3",
-      "0"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 273,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Inter",
-      "Genoa",
-      "Juventus",
-      "Sampdoria"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 274,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 275,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 1,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 276,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 277,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Cristiano Ronaldo (29)",
-      "Lautaro Martínez (24)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 278,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 279,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 280,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Milan",
-      "Napoli",
-      "Juventus",
-      "Lazio"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 281,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Milan",
-      "Cagliari",
-      "Juventus",
-      "Hellas Verona"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 282,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 283,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Novese?",
-    "choices": [
+    "question": "Di quanti Scudetti può fregiarsi l'Hellas Verona?",
+    "options": [
       "3",
       "1",
       "2",
       "0"
     ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 1,
+    "difficulty": 3
   },
   {
-    "id": 284,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Casale?",
-    "choices": [
+    "question": "Qual è il numero di Scudetti di l'Hellas Verona?",
+    "options": [
+      "2",
+      "1",
+      "0",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Indica il totale di Scudetti di l'Hellas Verona.",
+    "options": [
       "3",
       "0",
       "2",
       "1"
     ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 3,
+    "difficulty": 3
   },
   {
-    "id": 285,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Fiorentina",
-      "Juventus",
-      "Cagliari",
-      "Sampdoria"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 286,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)",
-      "Ciro Immobile (27)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 287,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Napoli",
-      "Cagliari",
-      "Juventus",
-      "Inter"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 288,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Milan?",
-    "choices": [
-      "18",
-      "19",
-      "21",
-      "20"
-    ],
-    "answerIndex": 1,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 289,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quanti Scudetti ha vinto il Lazio?",
-    "choices": [
+    "question": "Quanti titoli nazionali (Scudetti) ha l'Hellas Verona?",
+    "options": [
       "2",
-      "4",
       "3",
-      "1"
+      "1",
+      "0"
     ],
-    "answerIndex": 0,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
+    "correctIndex": 2,
+    "difficulty": 3
   },
   {
-    "id": 290,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)",
-      "Lautaro Martínez (24)"
+    "question": "Qual è il computo degli Scudetti di l'Hellas Verona?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "0"
     ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
+    "correctIndex": 1,
+    "difficulty": 3
   },
   {
-    "id": 291,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Lautaro Martínez (24)",
-      "Cristiano Ronaldo (29)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 292,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 293,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Milan",
-      "Juventus",
-      "Fiorentina"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 294,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2023/24 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Ciro Immobile (27)"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.legaseriea.it/it/media/serie-a/top-scorers-i-re-del-gol-della-serie-a-710d2ib",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 295,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Fabio Quagliarella (26)",
-      "Lautaro Martínez (24)",
-      "Victor Osimhen (26)",
-      "Gonzalo Higuaín (36)"
-    ],
-    "answerIndex": 2,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 296,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Bologna",
-      "Hellas Verona",
-      "Juventus",
-      "Casale"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 297,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2022/23 e con quante reti?",
-    "choices": [
-      "Victor Osimhen (26)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Fabio Quagliarella (26)"
-    ],
-    "answerIndex": 0,
-    "source": "https://img.legaseriea.it/vimages/647cd67d/CS%20163%20-%20Striker%20of%20the%20year%20presented%20by%20crypto.com%2022-23.pdf",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 298,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Genoa",
-      "Casale",
-      "Juventus",
-      "Napoli"
-    ],
-    "answerIndex": 2,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 299,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Chi è stato il capocannoniere in Serie A 2015/16 e con quante reti?",
-    "choices": [
-      "Ciro Immobile (27)",
-      "Lautaro Martínez (24)",
-      "Gonzalo Higuaín (36)",
-      "Victor Osimhen (26)"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.legaseriea.it/en/media/serie-a/higuain-capocannoniere-del-campionato",
-    "tags": [
-      "record",
-      "capocannoniere",
-      "media"
-    ]
-  },
-  {
-    "id": 300,
-    "difficulty": 6,
-    "category": "Serie A",
-    "question": "Quale club ha vinto più Scudetti in Serie A?",
-    "choices": [
-      "Roma",
-      "Hellas Verona",
-      "Fiorentina",
-      "Juventus"
-    ],
-    "answerIndex": 3,
-    "source": "https://static.legaseriea.it/it/serie-a/albo",
-    "tags": [
-      "record",
-      "scudetti",
-      "media"
-    ]
-  },
-  {
-    "id": 301,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Liverpool?",
-    "choices": [
-      "7",
-      "8",
-      "5",
-      "6"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 302,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Porto",
-      "Barcelona",
-      "Manchester United"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 303,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Inter",
-      "Juventus",
-      "Ajax",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 304,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Porto",
-      "Inter",
-      "Bayern München",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 305,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Porto",
-      "Real Madrid",
-      "Manchester United",
-      "Bayern München"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 306,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Milan",
-      "Real Madrid",
-      "Porto",
-      "Juventus"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 307,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Liverpool?",
-    "choices": [
-      "6",
-      "7",
-      "8",
-      "5"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 308,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Milan",
-      "Ajax",
-      "Porto"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 309,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Porto?",
-    "choices": [
+    "question": "Quanti Scudetti risultano in bacheca per l'Hellas Verona?",
+    "options": [
       "3",
       "2",
-      "4",
+      "0",
       "1"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 3
   },
   {
-    "id": 310,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Milan?",
-    "choices": [
-      "9",
-      "7",
-      "6",
-      "8"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 311,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Benfica",
-      "Inter",
-      "Chelsea",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 312,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Real Madrid?",
-    "choices": [
-      "17",
-      "16",
-      "15",
-      "14"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 313,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Chelsea",
-      "Inter",
-      "Real Madrid",
-      "Bayern München"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 314,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Manchester United?",
-    "choices": [
+    "question": "Qual è il totale degli Scudetti vinti da l'Hellas Verona?",
+    "options": [
+      "0",
       "3",
-      "5",
-      "4",
+      "2",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato l'Hellas Verona?",
+    "options": [
+      "3",
+      "0",
+      "1",
       "2"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 3
   },
   {
-    "id": 315,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Benfica",
-      "Inter",
-      "Real Madrid",
-      "Barcelona"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 316,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Chelsea?",
-    "choices": [
+    "question": "Quanti Scudetti ha vinto il Cagliari?",
+    "options": [
       "2",
-      "4",
+      "0",
+      "3",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti conta il Cagliari?",
+    "options": [
+      "3",
+      "1",
+      "0",
+      "2"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi il Cagliari?",
+    "options": [
+      "0",
+      "2",
+      "3",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il numero di Scudetti di il Cagliari?",
+    "options": [
+      "1",
+      "0",
+      "3",
+      "2"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Indica il totale di Scudetti di il Cagliari.",
+    "options": [
+      "2",
+      "3",
+      "0",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha il Cagliari?",
+    "options": [
+      "1",
+      "0",
+      "3",
+      "2"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di il Cagliari?",
+    "options": [
+      "0",
+      "2",
       "1",
       "3"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 3
   },
   {
-    "id": 317,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Inter",
-      "Porto",
-      "Bayern München"
+    "question": "Quanti Scudetti risultano in bacheca per il Cagliari?",
+    "options": [
+      "1",
+      "3",
+      "0",
+      "2"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 3
   },
   {
-    "id": 318,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Manchester United",
-      "Ajax",
-      "Juventus",
-      "Real Madrid"
+    "question": "Qual è il totale degli Scudetti vinti da il Cagliari?",
+    "options": [
+      "2",
+      "3",
+      "0",
+      "1"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 3
   },
   {
-    "id": 319,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Porto",
-      "Milan",
-      "Ajax"
+    "question": "Quanti Scudetti ufficiali ha conquistato il Cagliari?",
+    "options": [
+      "3",
+      "1",
+      "0",
+      "2"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 3
   },
   {
-    "id": 320,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Ajax?",
-    "choices": [
-      "5",
-      "6",
-      "4",
+    "question": "Quanti Scudetti ha vinto il Casale?",
+    "options": [
+      "1",
+      "3",
+      "0",
+      "2"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti conta il Casale?",
+    "options": [
+      "1",
+      "3",
+      "2",
+      "0"
+    ],
+    "correctIndex": 0,
+    "difficulty": 3
+  },
+  {
+    "question": "Di quanti Scudetti può fregiarsi il Casale?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "0"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il numero di Scudetti di il Casale?",
+    "options": [
+      "0",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Indica il totale di Scudetti di il Casale.",
+    "options": [
+      "3",
+      "0",
+      "1",
+      "2"
+    ],
+    "correctIndex": 2,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha il Casale?",
+    "options": [
+      "0",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di il Casale?",
+    "options": [
+      "3",
+      "1",
+      "2",
+      "0"
+    ],
+    "correctIndex": 1,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per il Casale?",
+    "options": [
+      "3",
+      "2",
+      "0",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 3
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da il Casale?",
+    "options": [
+      "0",
+      "3",
+      "1",
+      "2"
+    ],
+    "correctIndex": 2,
+    "difficulty": 3
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato il Casale?",
+    "options": [
+      "1",
+      "2",
+      "0",
       "3"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 3
   },
   {
-    "id": 321,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Manchester United",
-      "Chelsea",
-      "Porto",
-      "Real Madrid"
+    "question": "Quanti Scudetti ha vinto la Novese?",
+    "options": [
+      "3",
+      "1",
+      "0",
+      "2"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 4
   },
   {
-    "id": 322,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Bayern München?",
-    "choices": [
-      "8",
-      "5",
-      "7",
-      "6"
+    "question": "Quanti Scudetti conta la Novese?",
+    "options": [
+      "1",
+      "0",
+      "3",
+      "2"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 323,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Ajax",
-      "Porto",
-      "Real Madrid",
-      "Manchester United"
+    "question": "Di quanti Scudetti può fregiarsi la Novese?",
+    "options": [
+      "3",
+      "2",
+      "0",
+      "1"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 4
   },
   {
-    "id": 324,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
+    "question": "Qual è il numero di Scudetti di la Novese?",
+    "options": [
+      "3",
+      "0",
+      "1",
+      "2"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Indica il totale di Scudetti di la Novese.",
+    "options": [
+      "0",
+      "3",
+      "1",
+      "2"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti titoli nazionali (Scudetti) ha la Novese?",
+    "options": [
+      "2",
+      "1",
+      "0",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 4
+  },
+  {
+    "question": "Qual è il computo degli Scudetti di la Novese?",
+    "options": [
+      "2",
+      "3",
+      "0",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti Scudetti risultano in bacheca per la Novese?",
+    "options": [
+      "0",
+      "2",
+      "1",
+      "3"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Qual è il totale degli Scudetti vinti da la Novese?",
+    "options": [
+      "0",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 1,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti Scudetti ufficiali ha conquistato la Novese?",
+    "options": [
+      "2",
+      "0",
+      "3",
+      "1"
+    ],
+    "correctIndex": 3,
+    "difficulty": 4
+  },
+  {
+    "question": "Quale club ha vinto più Scudetti in Serie A?",
+    "options": [
       "Milan",
-      "Barcelona",
-      "Juventus"
+      "Juventus",
+      "Inter",
+      "Roma"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 4
   },
   {
-    "id": 325,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Porto",
-      "Real Madrid",
-      "Ajax",
+    "question": "Chi detiene il record di Scudetti in Serie A?",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Roma",
       "Milan"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 4
   },
   {
-    "id": 326,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Porto",
-      "Real Madrid",
+    "question": "Qual è la squadra con più Scudetti in Serie A?",
+    "options": [
+      "Juventus",
       "Inter",
-      "Ajax"
+      "Milan",
+      "Roma"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 327,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Chelsea",
-      "Porto",
-      "Manchester United",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 328,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
+    "question": "Quale team ha il maggior numero di Scudetti in Serie A?",
+    "options": [
       "Inter",
-      "Real Madrid",
-      "Liverpool",
-      "Chelsea"
+      "Roma",
+      "Juventus",
+      "Milan"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 4
   },
   {
-    "id": 329,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Manchester United",
-      "Benfica",
-      "Chelsea",
-      "Real Madrid"
+    "question": "Chi ha vinto il maggior numero di Scudetti in Serie A?",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Roma",
+      "Inter"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 4
   },
   {
-    "id": 330,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Porto?",
-    "choices": [
-      "1",
-      "2",
-      "3",
-      "4"
+    "question": "Qual è il club più titolato (Scudetti) in Serie A?",
+    "options": [
+      "Milan",
+      "Inter",
+      "Juventus",
+      "Roma"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 4
   },
   {
-    "id": 331,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Benfica",
-      "Ajax",
-      "Real Madrid",
+    "question": "In Serie A, chi ha il primato di Scudetti?",
+    "options": [
+      "Milan",
+      "Inter",
+      "Roma",
       "Juventus"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 4
   },
   {
-    "id": 332,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
+    "question": "Quale società vanta più Scudetti in Serie A?",
+    "options": [
+      "Roma",
+      "Juventus",
       "Inter",
-      "Liverpool",
-      "Real Madrid",
-      "Ajax"
+      "Milan"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 4
   },
   {
-    "id": 333,
-    "difficulty": 7,
-    "category": "UEFA",
+    "question": "Chi è al primo posto per Scudetti in Serie A?",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Roma",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 4
+  },
+  {
+    "question": "Chi guida l'albo degli Scudetti in Serie A?",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 4
+  },
+  {
     "question": "Quanti titoli di Champions League ha vinto il Real Madrid?",
-    "choices": [
+    "options": [
+      "16",
+      "14",
+      "15",
+      "17"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Real Madrid?",
+    "options": [
       "15",
       "17",
       "16",
       "14"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 334,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Porto",
-      "Benfica",
-      "Chelsea"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 335,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Ajax?",
-    "choices": [
-      "5",
-      "3",
-      "4",
-      "6"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 336,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Benfica",
-      "Real Madrid",
-      "Manchester United",
-      "Bayern München"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 337,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Juventus?",
-    "choices": [
-      "2",
-      "1",
-      "3",
-      "4"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 338,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Chelsea",
-      "Inter",
-      "Real Madrid",
-      "Bayern München"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 339,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Bayern München?",
-    "choices": [
-      "7",
-      "8",
-      "5",
-      "6"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 340,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Benfica",
-      "Chelsea",
-      "Liverpool"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 341,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Porto",
-      "Barcelona",
-      "Juventus"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 342,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Inter",
-      "Ajax",
-      "Chelsea",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 343,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Porto?",
-    "choices": [
-      "4",
-      "1",
-      "3",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 344,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Benfica",
-      "Manchester United",
-      "Juventus"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 345,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Milan",
-      "Ajax",
-      "Manchester United",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 346,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Liverpool?",
-    "choices": [
-      "8",
-      "7",
-      "6",
-      "5"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 347,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Real Madrid?",
-    "choices": [
-      "16",
+    "question": "Qual è il numero di Champions League vinte da il Real Madrid?",
+    "options": [
       "17",
+      "16",
       "14",
       "15"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 4
   },
   {
-    "id": 348,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Ajax?",
-    "choices": [
-      "4",
-      "6",
-      "3",
-      "5"
+    "question": "Indica il totale di Champions League vinte da il Real Madrid.",
+    "options": [
+      "17",
+      "14",
+      "16",
+      "15"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 4
   },
   {
-    "id": 349,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Chelsea",
-      "Real Madrid",
-      "Manchester United",
-      "Benfica"
+    "question": "Quanti titoli europei (Champions) ha vinto il Real Madrid?",
+    "options": [
+      "16",
+      "14",
+      "15",
+      "17"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 4
   },
   {
-    "id": 350,
-    "difficulty": 7,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Barcelona?",
-    "choices": [
-      "7",
-      "4",
-      "5",
-      "6"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 351,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Real Madrid?",
-    "choices": [
+    "question": "Di quante Champions può vantarsi il Real Madrid?",
+    "options": [
       "17",
       "16",
       "15",
       "14"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 4
   },
   {
-    "id": 352,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Benfica?",
-    "choices": [
-      "2",
-      "1",
-      "4",
-      "3"
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Real Madrid?",
+    "options": [
+      "14",
+      "17",
+      "15",
+      "16"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 4
   },
   {
-    "id": 353,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Juventus?",
-    "choices": [
-      "3",
-      "4",
-      "1",
-      "2"
+    "question": "Qual è il computo di Champions vinte da il Real Madrid?",
+    "options": [
+      "15",
+      "14",
+      "16",
+      "17"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 354,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Benfica?",
-    "choices": [
-      "3",
-      "1",
-      "4",
-      "2"
+    "question": "Quanti trofei Champions appartengono a il Real Madrid?",
+    "options": [
+      "15",
+      "16",
+      "14",
+      "17"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 355,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Benfica",
-      "Milan",
-      "Liverpool"
+    "question": "Totale Champions vinte da il Real Madrid?",
+    "options": [
+      "15",
+      "17",
+      "16",
+      "14"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 356,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Chelsea?",
-    "choices": [
-      "4",
-      "1",
-      "3",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 357,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Chelsea",
-      "Barcelona",
-      "Real Madrid",
-      "Milan"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 358,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Juventus",
-      "Real Madrid",
-      "Manchester United",
-      "Liverpool"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 359,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Chelsea?",
-    "choices": [
-      "1",
-      "2",
-      "4",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 360,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Milan",
-      "Bayern München",
-      "Real Madrid",
-      "Barcelona"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 361,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Porto?",
-    "choices": [
-      "1",
-      "2",
-      "4",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 362,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Porto",
-      "Milan",
-      "Real Madrid",
-      "Liverpool"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 363,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Manchester United?",
-    "choices": [
-      "5",
-      "2",
-      "4",
-      "3"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 364,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Porto",
-      "Benfica",
-      "Real Madrid",
-      "Inter"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 365,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Ajax?",
-    "choices": [
-      "3",
-      "4",
+    "question": "Quanti titoli di Champions League ha vinto il Milan?",
+    "options": [
       "6",
-      "5"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 366,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Porto",
-      "Inter",
-      "Juventus"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 367,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Inter?",
-    "choices": [
-      "2",
-      "5",
-      "4",
-      "3"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 368,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Bayern München",
-      "Ajax",
-      "Real Madrid",
-      "Juventus"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 369,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Benfica",
-      "Inter",
-      "Chelsea"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 370,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Bayern München?",
-    "choices": [
-      "5",
+      "9",
       "7",
+      "8"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Milan?",
+    "options": [
+      "8",
+      "6",
+      "7",
+      "9"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da il Milan?",
+    "options": [
+      "7",
+      "6",
+      "8",
+      "9"
+    ],
+    "correctIndex": 0,
+    "difficulty": 4
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da il Milan.",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "correctIndex": 1,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto il Milan?",
+    "options": [
+      "7",
+      "9",
       "6",
       "8"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 371,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Bayern München?",
-    "choices": [
+    "question": "Di quante Champions può vantarsi il Milan?",
+    "options": [
+      "6",
+      "9",
+      "8",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 4
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Milan?",
+    "options": [
+      "9",
+      "8",
+      "6",
+      "7"
+    ],
+    "correctIndex": 3,
+    "difficulty": 4
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da il Milan?",
+    "options": [
       "8",
       "6",
       "7",
+      "9"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a il Milan?",
+    "options": [
+      "8",
+      "7",
+      "9",
+      "6"
+    ],
+    "correctIndex": 1,
+    "difficulty": 4
+  },
+  {
+    "question": "Totale Champions vinte da il Milan?",
+    "options": [
+      "7",
+      "6",
+      "9",
+      "8"
+    ],
+    "correctIndex": 0,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti titoli di Champions League ha vinto il Liverpool?",
+    "options": [
+      "6",
+      "5",
+      "7",
+      "8"
+    ],
+    "correctIndex": 0,
+    "difficulty": 4
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Liverpool?",
+    "options": [
+      "6",
+      "7",
+      "8",
       "5"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 4
   },
   {
-    "id": 372,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Chelsea?",
-    "choices": [
-      "3",
-      "4",
-      "1",
-      "2"
+    "question": "Qual è il numero di Champions League vinte da il Liverpool?",
+    "options": [
+      "7",
+      "8",
+      "5",
+      "6"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 4
   },
   {
-    "id": 373,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Barcelona",
-      "Liverpool",
-      "Bayern München"
+    "question": "Indica il totale di Champions League vinte da il Liverpool.",
+    "options": [
+      "5",
+      "8",
+      "7",
+      "6"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 4
   },
   {
-    "id": 374,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Liverpool",
-      "Ajax",
-      "Real Madrid",
-      "Inter"
+    "question": "Quanti titoli europei (Champions) ha vinto il Liverpool?",
+    "options": [
+      "8",
+      "5",
+      "6",
+      "7"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 4
   },
   {
-    "id": 375,
-    "difficulty": 8,
-    "category": "UEFA",
+    "question": "Di quante Champions può vantarsi il Liverpool?",
+    "options": [
+      "6",
+      "8",
+      "7",
+      "5"
+    ],
+    "correctIndex": 0,
+    "difficulty": 4
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Liverpool?",
+    "options": [
+      "5",
+      "6",
+      "8",
+      "7"
+    ],
+    "correctIndex": 1,
+    "difficulty": 4
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da il Liverpool?",
+    "options": [
+      "8",
+      "7",
+      "5",
+      "6"
+    ],
+    "correctIndex": 3,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a il Liverpool?",
+    "options": [
+      "8",
+      "7",
+      "6",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 4
+  },
+  {
+    "question": "Totale Champions vinte da il Liverpool?",
+    "options": [
+      "6",
+      "5",
+      "7",
+      "8"
+    ],
+    "correctIndex": 0,
+    "difficulty": 4
+  },
+  {
+    "question": "Quanti titoli di Champions League ha vinto il Bayern München?",
+    "options": [
+      "8",
+      "7",
+      "6",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Bayern München?",
+    "options": [
+      "8",
+      "5",
+      "6",
+      "7"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da il Bayern München?",
+    "options": [
+      "6",
+      "5",
+      "7",
+      "8"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da il Bayern München.",
+    "options": [
+      "8",
+      "5",
+      "7",
+      "6"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto il Bayern München?",
+    "options": [
+      "7",
+      "5",
+      "8",
+      "6"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Di quante Champions può vantarsi il Bayern München?",
+    "options": [
+      "6",
+      "8",
+      "7",
+      "5"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Bayern München?",
+    "options": [
+      "7",
+      "5",
+      "6",
+      "8"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da il Bayern München?",
+    "options": [
+      "6",
+      "5",
+      "8",
+      "7"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a il Bayern München?",
+    "options": [
+      "6",
+      "5",
+      "7",
+      "8"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Totale Champions vinte da il Bayern München?",
+    "options": [
+      "8",
+      "7",
+      "6",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
     "question": "Quanti titoli di Champions League ha vinto il Barcelona?",
-    "choices": [
+    "options": [
+      "4",
+      "6",
+      "5",
+      "7"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Barcelona?",
+    "options": [
+      "7",
+      "4",
+      "6",
+      "5"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da il Barcelona?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da il Barcelona.",
+    "options": [
+      "4",
+      "7",
+      "6",
+      "5"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto il Barcelona?",
+    "options": [
+      "4",
+      "5",
+      "7",
+      "6"
+    ],
+    "correctIndex": 1,
+    "difficulty": 5
+  },
+  {
+    "question": "Di quante Champions può vantarsi il Barcelona?",
+    "options": [
+      "5",
+      "7",
+      "4",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Barcelona?",
+    "options": [
       "6",
       "7",
       "4",
       "5"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 5
   },
   {
-    "id": 376,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Chelsea?",
-    "choices": [
-      "1",
+    "question": "Qual è il computo di Champions vinte da il Barcelona?",
+    "options": [
+      "4",
+      "6",
+      "5",
+      "7"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a il Barcelona?",
+    "options": [
+      "7",
+      "6",
+      "4",
+      "5"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Totale Champions vinte da il Barcelona?",
+    "options": [
+      "6",
+      "4",
+      "5",
+      "7"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti titoli di Champions League ha vinto l'Ajax?",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Champions League ha in bacheca l'Ajax?",
+    "options": [
+      "5",
+      "3",
+      "4",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da l'Ajax?",
+    "options": [
+      "6",
+      "5",
+      "3",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da l'Ajax.",
+    "options": [
+      "6",
+      "5",
+      "3",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto l'Ajax?",
+    "options": [
+      "3",
+      "5",
+      "6",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 5
+  },
+  {
+    "question": "Di quante Champions può vantarsi l'Ajax?",
+    "options": [
+      "6",
+      "4",
+      "3",
+      "5"
+    ],
+    "correctIndex": 1,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto l'Ajax?",
+    "options": [
+      "4",
+      "6",
+      "5",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da l'Ajax?",
+    "options": [
+      "5",
+      "3",
+      "4",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a l'Ajax?",
+    "options": [
+      "4",
+      "6",
+      "5",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Totale Champions vinte da l'Ajax?",
+    "options": [
+      "6",
+      "4",
+      "5",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti titoli di Champions League ha vinto l'Inter?",
+    "options": [
+      "3",
       "2",
+      "5",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Champions League ha in bacheca l'Inter?",
+    "options": [
+      "4",
+      "3",
+      "5",
+      "2"
+    ],
+    "correctIndex": 1,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da l'Inter?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctIndex": 1,
+    "difficulty": 5
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da l'Inter.",
+    "options": [
+      "3",
+      "4",
+      "2",
+      "5"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto l'Inter?",
+    "options": [
+      "5",
+      "3",
+      "2",
+      "4"
+    ],
+    "correctIndex": 1,
+    "difficulty": 5
+  },
+  {
+    "question": "Di quante Champions può vantarsi l'Inter?",
+    "options": [
+      "2",
+      "4",
+      "3",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto l'Inter?",
+    "options": [
+      "3",
+      "5",
+      "2",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da l'Inter?",
+    "options": [
+      "3",
+      "2",
+      "5",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 5
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a l'Inter?",
+    "options": [
+      "2",
+      "5",
+      "3",
+      "4"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Totale Champions vinte da l'Inter?",
+    "options": [
+      "2",
+      "5",
       "4",
       "3"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 5
   },
   {
-    "id": 377,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Manchester United",
-      "Chelsea",
-      "Porto",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 378,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Ajax",
-      "Juventus",
-      "Barcelona"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 379,
-    "difficulty": 8,
-    "category": "UEFA",
     "question": "Quanti titoli di Champions League ha vinto il Manchester United?",
-    "choices": [
+    "options": [
+      "5",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctIndex": 2,
+    "difficulty": 5
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Manchester United?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctIndex": 1,
+    "difficulty": 5
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da il Manchester United?",
+    "options": [
       "2",
       "4",
       "5",
       "3"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 5
   },
   {
-    "id": 380,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Bayern München",
-      "Barcelona",
-      "Ajax"
+    "question": "Indica il totale di Champions League vinte da il Manchester United.",
+    "options": [
+      "3",
+      "5",
+      "2",
+      "4"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 5
   },
   {
-    "id": 381,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Juventus",
-      "Real Madrid",
-      "Manchester United",
-      "Porto"
+    "question": "Quanti titoli europei (Champions) ha vinto il Manchester United?",
+    "options": [
+      "3",
+      "5",
+      "2",
+      "4"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 5
   },
   {
-    "id": 382,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Milan?",
-    "choices": [
-      "6",
-      "8",
-      "9",
-      "7"
+    "question": "Di quante Champions può vantarsi il Manchester United?",
+    "options": [
+      "5",
+      "4",
+      "2",
+      "3"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 5
   },
   {
-    "id": 383,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Barcelona",
-      "Real Madrid",
-      "Liverpool",
-      "Inter"
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Manchester United?",
+    "options": [
+      "5",
+      "3",
+      "2",
+      "4"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 5
   },
   {
-    "id": 384,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Barcelona",
-      "Bayern München",
-      "Manchester United",
-      "Real Madrid"
+    "question": "Qual è il computo di Champions vinte da il Manchester United?",
+    "options": [
+      "2",
+      "5",
+      "3",
+      "4"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 5
   },
   {
-    "id": 385,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Ajax",
-      "Benfica",
-      "Chelsea",
-      "Real Madrid"
+    "question": "Quanti trofei Champions appartengono a il Manchester United?",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "5"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 5
   },
   {
-    "id": 386,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Bayern München",
-      "Liverpool",
-      "Benfica"
+    "question": "Totale Champions vinte da il Manchester United?",
+    "options": [
+      "2",
+      "5",
+      "4",
+      "3"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 5
   },
   {
-    "id": 387,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Barcelona",
-      "Chelsea",
-      "Bayern München",
-      "Real Madrid"
+    "question": "Quanti titoli di Champions League ha vinto la Juventus?",
+    "options": [
+      "4",
+      "3",
+      "1",
+      "2"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 6
   },
   {
-    "id": 388,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Real Madrid",
-      "Ajax",
-      "Inter",
-      "Benfica"
+    "question": "Quante Champions League ha in bacheca la Juventus?",
+    "options": [
+      "1",
+      "4",
+      "3",
+      "2"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 3,
+    "difficulty": 6
   },
   {
-    "id": 389,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Juventus",
-      "Benfica",
-      "Chelsea",
-      "Real Madrid"
+    "question": "Qual è il numero di Champions League vinte da la Juventus?",
+    "options": [
+      "1",
+      "4",
+      "2",
+      "3"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 6
   },
   {
-    "id": 390,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Benfica",
-      "Manchester United",
-      "Bayern München",
-      "Real Madrid"
+    "question": "Indica il totale di Champions League vinte da la Juventus.",
+    "options": [
+      "3",
+      "1",
+      "2",
+      "4"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 6
   },
   {
-    "id": 391,
-    "difficulty": 8,
-    "category": "UEFA",
+    "question": "Quanti titoli europei (Champions) ha vinto la Juventus?",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Di quante Champions può vantarsi la Juventus?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto la Juventus?",
+    "options": [
+      "1",
+      "4",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da la Juventus?",
+    "options": [
+      "3",
+      "1",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a la Juventus?",
+    "options": [
+      "4",
+      "3",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Totale Champions vinte da la Juventus?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti titoli di Champions League ha vinto il Porto?",
+    "options": [
+      "2",
+      "4",
+      "3",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Porto?",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da il Porto?",
+    "options": [
+      "3",
+      "4",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da il Porto.",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto il Porto?",
+    "options": [
+      "4",
+      "2",
+      "1",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 6
+  },
+  {
+    "question": "Di quante Champions può vantarsi il Porto?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Porto?",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da il Porto?",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a il Porto?",
+    "options": [
+      "3",
+      "1",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Totale Champions vinte da il Porto?",
+    "options": [
+      "2",
+      "1",
+      "4",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
     "question": "Quanti titoli di Champions League ha vinto il Benfica?",
-    "choices": [
+    "options": [
+      "3",
+      "4",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Benfica?",
+    "options": [
+      "4",
+      "3",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da il Benfica?",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da il Benfica.",
+    "options": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto il Benfica?",
+    "options": [
       "3",
       "2",
       "1",
       "4"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 6
   },
   {
-    "id": 392,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Manchester United?",
-    "choices": [
-      "5",
+    "question": "Di quante Champions può vantarsi il Benfica?",
+    "options": [
+      "3",
+      "4",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Benfica?",
+    "options": [
+      "1",
+      "3",
       "2",
+      "4"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da il Benfica?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a il Benfica?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctIndex": 1,
+    "difficulty": 6
+  },
+  {
+    "question": "Totale Champions vinte da il Benfica?",
+    "options": [
+      "4",
+      "1",
+      "2",
+      "3"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti titoli di Champions League ha vinto il Chelsea?",
+    "options": [
+      "3",
+      "4",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Quante Champions League ha in bacheca il Chelsea?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il numero di Champions League vinte da il Chelsea?",
+    "options": [
+      "3",
+      "2",
+      "4",
+      "1"
+    ],
+    "correctIndex": 1,
+    "difficulty": 6
+  },
+  {
+    "question": "Indica il totale di Champions League vinte da il Chelsea.",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti titoli europei (Champions) ha vinto il Chelsea?",
+    "options": [
+      "2",
+      "4",
+      "3",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Di quante Champions può vantarsi il Chelsea?",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quante Coppe dei Campioni/Champions ha ottenuto il Chelsea?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctIndex": 1,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il computo di Champions vinte da il Chelsea?",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quanti trofei Champions appartengono a il Chelsea?",
+    "options": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Totale Champions vinte da il Chelsea?",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quale club ha vinto più Champions League/European Cup?",
+    "options": [
+      "Real Madrid",
+      "Liverpool",
+      "Milan",
+      "Bayern München"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Chi detiene il record di vittorie in Champions League?",
+    "options": [
+      "Real Madrid",
+      "Bayern München",
+      "Liverpool",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è la squadra con più Champions League vinte?",
+    "options": [
+      "Bayern München",
+      "Real Madrid",
+      "Liverpool",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 6
+  },
+  {
+    "question": "Chi ha il maggior numero di Champions League?",
+    "options": [
+      "Liverpool",
+      "Milan",
+      "Bayern München",
+      "Real Madrid"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Quale team è il più titolato in Champions League?",
+    "options": [
+      "Real Madrid",
+      "Bayern München",
+      "Liverpool",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 6
+  },
+  {
+    "question": "Chi guida l'albo d'oro della Champions League?",
+    "options": [
+      "Milan",
+      "Bayern München",
+      "Liverpool",
+      "Real Madrid"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è il club leader per Champions League vinte?",
+    "options": [
+      "Milan",
+      "Liverpool",
+      "Real Madrid",
+      "Bayern München"
+    ],
+    "correctIndex": 2,
+    "difficulty": 6
+  },
+  {
+    "question": "Quale società detiene più Coppe dei Campioni/Champions?",
+    "options": [
+      "Liverpool",
+      "Real Madrid",
+      "Milan",
+      "Bayern München"
+    ],
+    "correctIndex": 1,
+    "difficulty": 6
+  },
+  {
+    "question": "Chi possiede il primato di Champions vinte?",
+    "options": [
+      "Bayern München",
+      "Real Madrid",
+      "Liverpool",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 6
+  },
+  {
+    "question": "Qual è la squadra con il record di Champions?",
+    "options": [
+      "Milan",
+      "Bayern München",
+      "Liverpool",
+      "Real Madrid"
+    ],
+    "correctIndex": 3,
+    "difficulty": 6
+  },
+  {
+    "question": "Chi ha vinto la classifica marcatori in Serie A 2015/16 e con quante reti?",
+    "options": [
+      "Victor Osimhen (26)",
+      "Lautaro Martínez (24)",
+      "Gonzalo Higuaín (36)",
+      "Ciro Immobile (27)"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Chi è stato il capocannoniere della Serie A 2015/16 e quante reti ha segnato?",
+    "options": [
+      "Lautaro Martínez (24)",
+      "Gonzalo Higuaín (36)",
+      "Victor Osimhen (26)",
+      "Ciro Immobile (27)"
+    ],
+    "correctIndex": 1,
+    "difficulty": 7
+  },
+  {
+    "question": "Indica nome e gol del capocannoniere della Serie A 2015/16.",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Ciro Immobile (27)",
+      "Lautaro Martínez (24)",
+      "Victor Osimhen (26)"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Serie A 2015/16: chi ha chiuso da capocannoniere e con quanti gol?",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Lautaro Martínez (24)",
+      "Victor Osimhen (26)",
+      "Ciro Immobile (27)"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Capocannoniere Serie A 2015/16: chi e quante reti?",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Ciro Immobile (27)",
+      "Victor Osimhen (26)",
+      "Lautaro Martínez (24)"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Chi ha vinto la classifica marcatori in Serie A 2022/23 e con quante reti?",
+    "options": [
+      "Ciro Immobile (27)",
+      "Lautaro Martínez (24)",
+      "Gonzalo Higuaín (36)",
+      "Victor Osimhen (26)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Chi è stato il capocannoniere della Serie A 2022/23 e quante reti ha segnato?",
+    "options": [
+      "Victor Osimhen (26)",
+      "Lautaro Martínez (24)",
+      "Ciro Immobile (27)",
+      "Gonzalo Higuaín (36)"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Indica nome e gol del capocannoniere della Serie A 2022/23.",
+    "options": [
+      "Lautaro Martínez (24)",
+      "Gonzalo Higuaín (36)",
+      "Ciro Immobile (27)",
+      "Victor Osimhen (26)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Serie A 2022/23: chi ha chiuso da capocannoniere e con quanti gol?",
+    "options": [
+      "Lautaro Martínez (24)",
+      "Gonzalo Higuaín (36)",
+      "Ciro Immobile (27)",
+      "Victor Osimhen (26)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Capocannoniere Serie A 2022/23: chi e quante reti?",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Lautaro Martínez (24)",
+      "Ciro Immobile (27)",
+      "Victor Osimhen (26)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Chi ha vinto la classifica marcatori in Serie A 2023/24 e con quante reti?",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Victor Osimhen (26)",
+      "Ciro Immobile (27)",
+      "Lautaro Martínez (24)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Chi è stato il capocannoniere della Serie A 2023/24 e quante reti ha segnato?",
+    "options": [
+      "Victor Osimhen (26)",
+      "Gonzalo Higuaín (36)",
+      "Lautaro Martínez (24)",
+      "Ciro Immobile (27)"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Indica nome e gol del capocannoniere della Serie A 2023/24.",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Victor Osimhen (26)",
+      "Ciro Immobile (27)",
+      "Lautaro Martínez (24)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Serie A 2023/24: chi ha chiuso da capocannoniere e con quanti gol?",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Victor Osimhen (26)",
+      "Lautaro Martínez (24)",
+      "Ciro Immobile (27)"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Capocannoniere Serie A 2023/24: chi e quante reti?",
+    "options": [
+      "Gonzalo Higuaín (36)",
+      "Ciro Immobile (27)",
+      "Victor Osimhen (26)",
+      "Lautaro Martínez (24)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
+    "options": [
+      "6",
+      "5",
       "4",
       "3"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 7
   },
   {
-    "id": 393,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Manchester United",
-      "Real Madrid",
-      "Liverpool",
+    "question": "Numero di Mondiali vinti dall’Italia?",
+    "options": [
+      "3",
+      "6",
+      "5",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Qual è il totale dei Mondiali dell’Italia?",
+    "options": [
+      "5",
+      "3",
+      "4",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Italia: quanti titoli Mondiali?",
+    "options": [
+      "4",
+      "3",
+      "5",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Di quanti Mondiali è campione l’Italia?",
+    "options": [
+      "6",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti trofei Mondiali conta l’Italia?",
+    "options": [
+      "3",
+      "5",
+      "4",
+      "6"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti Mondiali ha in bacheca l’Italia?",
+    "options": [
+      "4",
+      "3",
+      "6",
+      "5"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Totale vittorie al Mondiale dell’Italia?",
+    "options": [
+      "4",
+      "6",
+      "5",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti successi ai Mondiali per l’Italia?",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "6"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti titoli FIFA World Cup ha vinto l’Italia?",
+    "options": [
+      "3",
+      "6",
+      "4",
+      "5"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Italia, numero di Coppe del Mondo vinte?",
+    "options": [
+      "4",
+      "3",
+      "6",
+      "5"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Qual è il computo dei Mondiali vinti dall’Italia?",
+    "options": [
+      "6",
+      "4",
+      "5",
+      "3"
+    ],
+    "correctIndex": 1,
+    "difficulty": 7
+  },
+  {
+    "question": "Indica il numero di Mondiali vinti dall’Italia.",
+    "options": [
+      "6",
+      "5",
+      "4",
+      "3"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti campionati del mondo ha conquistato l’Italia?",
+    "options": [
+      "4",
+      "6",
+      "3",
+      "5"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Italia: quante Coppe del Mondo?",
+    "options": [
+      "3",
+      "5",
+      "6",
+      "4"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti Campionati Europei ha vinto l’Italia?",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Numero di Europei vinti dall’Italia?",
+    "options": [
+      "3",
+      "4",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Qual è il totale degli Europei dell’Italia?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctIndex": 1,
+    "difficulty": 7
+  },
+  {
+    "question": "Italia: quanti titoli Europei?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Di quanti Europei è campione l’Italia?",
+    "options": [
+      "3",
+      "2",
+      "1",
+      "4"
+    ],
+    "correctIndex": 1,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti trofei Europei conta l’Italia?",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti Europei ha in bacheca l’Italia?",
+    "options": [
+      "3",
+      "4",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Totale vittorie all’Europeo dell’Italia?",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti successi all’Europeo per l’Italia?",
+    "options": [
+      "2",
+      "1",
+      "4",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti titoli UEFA EURO ha vinto l’Italia?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "4"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Italia, numero di Campionati Europei vinti?",
+    "options": [
+      "4",
+      "2",
+      "3",
+      "1"
+    ],
+    "correctIndex": 1,
+    "difficulty": 7
+  },
+  {
+    "question": "Qual è il computo degli Europei vinti dall’Italia?",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Indica il numero di Europei vinti dall’Italia.",
+    "options": [
+      "3",
+      "4",
+      "1",
+      "2"
+    ],
+    "correctIndex": 3,
+    "difficulty": 7
+  },
+  {
+    "question": "Quanti campionati europei ha conquistato l’Italia?",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Italia: quanti Europei?",
+    "options": [
+      "2",
+      "4",
+      "1",
+      "3"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Il fuorigioco è punito con:",
+    "options": [
+      "Calcio d’angolo",
+      "Calcio di punizione diretto",
+      "Calcio di punizione indiretto",
+      "Rimessa dal fondo"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Qual è la sanzione tecnica per un fuorigioco?",
+    "options": [
+      "Rimessa dal fondo",
+      "Calcio di punizione indiretto",
+      "Calcio di punizione diretto",
+      "Calcio d’angolo"
+    ],
+    "correctIndex": 1,
+    "difficulty": 7
+  },
+  {
+    "question": "Fuorigioco: quale ripresa di gioco è corretta?",
+    "options": [
+      "Calcio d’angolo",
+      "Calcio di punizione diretto",
+      "Calcio di punizione indiretto",
+      "Rimessa dal fondo"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "In caso di fuorigioco, che tipo di calcio di punizione si assegna?",
+    "options": [
+      "Calcio d’angolo",
+      "Rimessa dal fondo",
+      "Calcio di punizione indiretto",
+      "Calcio di punizione diretto"
+    ],
+    "correctIndex": 2,
+    "difficulty": 7
+  },
+  {
+    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
+    "options": [
+      "Quando è calciato e chiaramente si muove",
+      "Solo quando esce dall’area",
+      "Quando tocca un compagno",
+      "Quando l’arbitro fischia"
+    ],
+    "correctIndex": 0,
+    "difficulty": 7
+  },
+  {
+    "question": "Rimessa dal fondo: quando il pallone torna in gioco?",
+    "options": [
+      "Quando è calciato e chiaramente si muove",
+      "Quando l’arbitro fischia",
+      "Quando tocca un compagno",
+      "Solo quando esce dall’area"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "A quale condizione la rimessa dal fondo rende il pallone in gioco?",
+    "options": [
+      "Quando tocca un compagno",
+      "Solo quando esce dall’area",
+      "Quando l’arbitro fischia",
+      "Quando è calciato e chiaramente si muove"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "Rimessa dal fondo, momento in cui il pallone è in gioco: quale?",
+    "options": [
+      "Solo quando esce dall’area",
+      "Quando è calciato e chiaramente si muove",
+      "Quando tocca un compagno",
+      "Quando l’arbitro fischia"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "Quale fallo in area comporta rigore?",
+    "options": [
+      "Ostruzione senza contatto",
+      "Fuorigioco",
+      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
+      "Rimessa irregolare"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "Rigore: quale tipo di infrazione in area lo provoca?",
+    "options": [
+      "Fuorigioco",
+      "Ostruzione senza contatto",
+      "Rimessa irregolare",
+      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In area, che infrazione porta all'assegnazione del rigore?",
+    "options": [
+      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
+      "Fuorigioco",
+      "Ostruzione senza contatto",
+      "Rimessa irregolare"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "Quale contatto in area comporta il calcio di rigore?",
+    "options": [
+      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
+      "Ostruzione senza contatto",
+      "Fuorigioco",
+      "Rimessa irregolare"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "Quante sostituzioni standard sono consentite nei regolamenti moderni?",
+    "options": [
+      "Sei senza limiti",
+      "Cinque (eventuale sesta nei supplementari se previsto)",
+      "Tre",
+      "Due"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "Il fuorigioco NON si applica quando il giocatore riceve da:",
+    "options": [
+      "Retropassaggio volontario di un compagno",
+      "Punizione indiretto",
+      "Rimessa laterale, calcio d’angolo o rimessa dal fondo",
+      "Punizione diretto"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "Dopo un fuorigioco, la ripresa corretta è:",
+    "options": [
+      "Calcio d’angolo",
+      "Calcio di punizione indiretto",
+      "Rimessa laterale",
+      "Calcio di punizione diretto"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "Contatto falloso in area sul portatore: la decisione tecnica è:",
+    "options": [
+      "Rimessa laterale",
+      "Rimessa dal fondo",
+      "Calcio di punizione indiretto",
+      "Calcio di rigore"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "Quando un rigore è regolarmente eseguito?",
+    "options": [
+      "Solo dopo un rimbalzo",
+      "Quando l’arbitro fischia",
+      "Quando tocca un compagno",
+      "Quando il pallone è calciato e si muove in avanti"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 1)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 2)",
+    "options": [
+      "Milan",
+      "Roma",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 3)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 4)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 5)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Roma",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 6)",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Roma",
       "Inter"
     ],
-    "answerIndex": 1,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 0,
+    "difficulty": 8
   },
   {
-    "id": 394,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Porto",
-      "Manchester United",
+    "question": "In Serie A, squadra con più Scudetti? (var 7)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 8)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 9)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 10)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 11)",
+    "options": [
+      "Milan",
+      "Inter",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 12)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 13)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 14)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 15)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 16)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 17)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 18)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 19)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 20)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Roma",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 21)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 22)",
+    "options": [
+      "Juventus",
+      "Inter",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 23)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 24)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 25)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Roma",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 26)",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 0,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 27)",
+    "options": [
+      "Milan",
+      "Inter",
+      "Roma",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 28)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Roma",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 29)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 30)",
+    "options": [
+      "Milan",
+      "Inter",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 31)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 32)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 33)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 34)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 35)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 36)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Roma",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 37)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 38)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 8
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 39)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 40)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 41)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 42)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 43)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 44)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Roma",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 45)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 46)",
+    "options": [
+      "Milan",
+      "Inter",
+      "Roma",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 47)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 48)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 49)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 50)",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Roma",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 51)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 52)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 53)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 54)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 55)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 56)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 57)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 58)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 59)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 60)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 61)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 62)",
+    "options": [
+      "Juventus",
+      "Inter",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 63)",
+    "options": [
+      "Milan",
+      "Roma",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 64)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 65)",
+    "options": [
+      "Milan",
+      "Roma",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 66)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 67)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 68)",
+    "options": [
+      "Juventus",
+      "Inter",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 69)",
+    "options": [
+      "Milan",
+      "Roma",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 70)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 71)",
+    "options": [
+      "Milan",
+      "Roma",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 72)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 73)",
+    "options": [
+      "Milan",
+      "Inter",
+      "Roma",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 74)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 75)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 76)",
+    "options": [
+      "Juventus",
+      "Inter",
+      "Roma",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 77)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 78)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Roma",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 79)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 80)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 81)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Roma",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 82)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 83)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 84)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 85)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 86)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Juventus",
+      "Inter"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 87)",
+    "options": [
+      "Milan",
+      "Inter",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 88)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 9
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 89)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 90)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 91)",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 92)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 93)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 94)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 95)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Roma",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 96)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Roma",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 97)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Roma",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 98)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 99)",
+    "options": [
+      "Milan",
+      "Juventus",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 100)",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Roma",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 101)",
+    "options": [
+      "Roma",
+      "Milan",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 102)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Roma",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 103)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 104)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 105)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 106)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 107)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 108)",
+    "options": [
+      "Milan",
+      "Roma",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 109)",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Inter",
+      "Roma"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 110)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 111)",
+    "options": [
+      "Juventus",
+      "Roma",
+      "Inter",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 112)",
+    "options": [
+      "Juventus",
+      "Milan",
+      "Roma",
+      "Inter"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 113)",
+    "options": [
+      "Milan",
+      "Roma",
+      "Inter",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 114)",
+    "options": [
+      "Inter",
+      "Juventus",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 115)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Juventus",
+      "Milan"
+    ],
+    "correctIndex": 2,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 116)",
+    "options": [
+      "Inter",
+      "Roma",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 117)",
+    "options": [
+      "Roma",
+      "Juventus",
+      "Milan",
+      "Inter"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 118)",
+    "options": [
+      "Inter",
+      "Milan",
+      "Juventus",
+      "Roma"
+    ],
+    "correctIndex": 2,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 119)",
+    "options": [
+      "Juventus",
+      "Inter",
+      "Milan",
+      "Roma"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "In Serie A, squadra con più Scudetti? (var 120)",
+    "options": [
+      "Roma",
+      "Inter",
+      "Milan",
+      "Juventus"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 1)",
+    "options": [
+      "Real Madrid",
+      "Liverpool",
+      "Milan",
+      "Barcelona"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 2)",
+    "options": [
+      "Milan",
+      "Liverpool",
+      "Barcelona",
+      "Real Madrid"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 3)",
+    "options": [
+      "Real Madrid",
+      "Milan",
+      "Barcelona",
+      "Liverpool"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 4)",
+    "options": [
+      "Milan",
+      "Barcelona",
+      "Liverpool",
+      "Real Madrid"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 5)",
+    "options": [
+      "Real Madrid",
+      "Liverpool",
+      "Milan",
+      "Barcelona"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 6)",
+    "options": [
+      "Liverpool",
+      "Real Madrid",
+      "Barcelona",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 7)",
+    "options": [
+      "Milan",
+      "Liverpool",
+      "Real Madrid",
+      "Barcelona"
+    ],
+    "correctIndex": 2,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 8)",
+    "options": [
+      "Real Madrid",
+      "Barcelona",
+      "Liverpool",
+      "Milan"
+    ],
+    "correctIndex": 0,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 9)",
+    "options": [
+      "Liverpool",
+      "Barcelona",
+      "Milan",
+      "Real Madrid"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 10)",
+    "options": [
+      "Milan",
+      "Barcelona",
+      "Liverpool",
+      "Real Madrid"
+    ],
+    "correctIndex": 3,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 11)",
+    "options": [
+      "Liverpool",
+      "Real Madrid",
+      "Barcelona",
+      "Milan"
+    ],
+    "correctIndex": 1,
+    "difficulty": 10
+  },
+  {
+    "question": "Club con più Champions League? (var 12)",
+    "options": [
+      "Liverpool",
+      "Barcelona",
       "Real Madrid",
       "Milan"
     ],
-    "answerIndex": 2,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 2,
+    "difficulty": 10
   },
   {
-    "id": 395,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
+    "question": "Club con più Champions League? (var 13)",
+    "options": [
+      "Milan",
       "Real Madrid",
       "Barcelona",
-      "Benfica",
       "Liverpool"
     ],
-    "answerIndex": 0,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 10
   },
   {
-    "id": 396,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Inter?",
-    "choices": [
-      "4",
-      "2",
-      "5",
-      "3"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 397,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quanti titoli di Champions League ha vinto il Liverpool?",
-    "choices": [
-      "7",
-      "5",
-      "8",
-      "6"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 398,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Barcelona",
-      "Benfica",
-      "Manchester United",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 399,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Benfica",
+    "question": "Club con più Champions League? (var 14)",
+    "options": [
       "Liverpool",
-      "Juventus",
-      "Real Madrid"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
-  },
-  {
-    "id": 400,
-    "difficulty": 8,
-    "category": "UEFA",
-    "question": "Quale club detiene il maggior numero di Champions League/European Cup?",
-    "choices": [
-      "Juventus",
+      "Real Madrid",
       "Milan",
-      "Ajax",
-      "Real Madrid"
+      "Barcelona"
     ],
-    "answerIndex": 3,
-    "source": "https://www.uefa.com/uefachampionsleague/history/winners/",
-    "tags": [
-      "record",
-      "ucl",
-      "difficile"
-    ]
+    "correctIndex": 1,
+    "difficulty": 10
   },
   {
-    "id": 401,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "3",
-      "6",
-      "5"
+    "question": "Club con più Champions League? (var 15)",
+    "options": [
+      "Milan",
+      "Real Madrid",
+      "Liverpool",
+      "Barcelona"
     ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
+    "correctIndex": 1,
+    "difficulty": 10
   },
   {
-    "id": 402,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "5",
-      "6",
-      "4"
+    "question": "Club con più Champions League? (var 16)",
+    "options": [
+      "Barcelona",
+      "Liverpool",
+      "Real Madrid",
+      "Milan"
     ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
+    "correctIndex": 2,
+    "difficulty": 10
   },
   {
-    "id": 403,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "4",
-      "3",
-      "6"
+    "question": "Club con più Champions League? (var 17)",
+    "options": [
+      "Milan",
+      "Real Madrid",
+      "Liverpool",
+      "Barcelona"
     ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
+    "correctIndex": 1,
+    "difficulty": 10
   },
   {
-    "id": 404,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "1",
-      "4",
-      "2"
+    "question": "Club con più Champions League? (var 18)",
+    "options": [
+      "Milan",
+      "Real Madrid",
+      "Liverpool",
+      "Barcelona"
     ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 405,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "6",
-      "3",
-      "5"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 406,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "5",
-      "3",
-      "6"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 407,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "2",
-      "3",
-      "4",
-      "1"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 408,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "6",
-      "5",
-      "4",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 409,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "3",
-      "4",
-      "6"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 410,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "1",
-      "3",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 411,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "2",
-      "3",
-      "1"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 412,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "1",
-      "4",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 413,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "6",
-      "4",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 414,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "1",
-      "4",
-      "2",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 415,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "4",
-      "1",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 416,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "2",
-      "1",
-      "4",
-      "3"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 417,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "2",
-      "1",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 418,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "4",
-      "1",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 419,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "4",
-      "6",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 420,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "3",
-      "1",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 421,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "1",
-      "2",
-      "3"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 422,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "4",
-      "6",
-      "5"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 423,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "1",
-      "4",
-      "3",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 424,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "4",
-      "6",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 425,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "2",
-      "1",
-      "4"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 426,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "3",
-      "4",
-      "6"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 427,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "4",
-      "3",
-      "6"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 428,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "4",
-      "2",
-      "1"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 429,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "2",
-      "4",
-      "1"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 430,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "3",
-      "5",
-      "6"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 431,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "2",
-      "3",
-      "4",
-      "1"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 432,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "1",
-      "3",
-      "4",
-      "2"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 433,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "6",
-      "4",
-      "3",
-      "5"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 434,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "2",
-      "4",
-      "1",
-      "3"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 435,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "2",
-      "1",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 436,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "2",
-      "1",
-      "4"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 437,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "4",
-      "6",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 438,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "4",
-      "5",
-      "6"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 439,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "4",
-      "2",
-      "1"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 440,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "5",
-      "6",
-      "4"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 441,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "5",
-      "3",
-      "4",
-      "6"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 442,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "6",
-      "4",
-      "5"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 443,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "1",
-      "2",
-      "3",
-      "4"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 444,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "6",
-      "5",
-      "3"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 445,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "1",
-      "3",
-      "2",
-      "4"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 446,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "2",
-      "3",
-      "1",
-      "4"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 447,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "2",
-      "3",
-      "1"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 448,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati Europei ha vinto l’Italia?",
-    "choices": [
-      "4",
-      "2",
-      "1",
-      "3"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "europei",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 449,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "3",
-      "5",
-      "4",
-      "6"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 450,
-    "difficulty": 9,
-    "category": "Nazionale",
-    "question": "Quanti Campionati del Mondo ha vinto l’Italia?",
-    "choices": [
-      "6",
-      "4",
-      "3",
-      "5"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.figc.it/it/full-html?path=%2Fnazionali%2Fpalmares-storia%2Fpalmares-e-storia",
-    "tags": [
-      "record",
-      "mondiali",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 451,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Ostruzione senza contatto",
-      "Rimessa irregolare",
-      "Fuorigioco"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 452,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Rimessa irregolare",
-      "Ostruzione senza contatto",
-      "Fuorigioco",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 453,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando tocca un compagno",
-      "Quando è calciato e chiaramente si muove",
-      "Solo quando esce dall’area",
-      "Quando l’arbitro fischia"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 454,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Fuorigioco",
-      "Ostruzione senza contatto",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Rimessa irregolare"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 455,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio d’angolo",
-      "Calcio di punizione indiretto",
-      "Rimessa dal fondo",
-      "Calcio di punizione diretto"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 456,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio di punizione diretto",
-      "Calcio d’angolo",
-      "Rimessa dal fondo",
-      "Calcio di punizione indiretto"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 457,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Rimessa dal fondo",
-      "Calcio di punizione indiretto",
-      "Calcio d’angolo",
-      "Calcio di punizione diretto"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 458,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Fuorigioco",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Ostruzione senza contatto",
-      "Rimessa irregolare"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 459,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Fuorigioco",
-      "Rimessa irregolare",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Ostruzione senza contatto"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 460,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Solo quando esce dall’area",
-      "Quando è calciato e chiaramente si muove",
-      "Quando l’arbitro fischia",
-      "Quando tocca un compagno"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 461,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio di punizione diretto",
-      "Calcio di punizione indiretto",
-      "Rimessa dal fondo",
-      "Calcio d’angolo"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 462,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Rimessa irregolare",
-      "Ostruzione senza contatto",
-      "Fuorigioco"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 463,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio d’angolo",
-      "Calcio di punizione indiretto",
-      "Calcio di punizione diretto",
-      "Rimessa dal fondo"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 464,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Rimessa dal fondo",
-      "Calcio di punizione indiretto",
-      "Calcio di punizione diretto",
-      "Calcio d’angolo"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 465,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Rimessa dal fondo",
-      "Calcio di punizione diretto",
-      "Calcio d’angolo",
-      "Calcio di punizione indiretto"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 466,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Rimessa dal fondo",
-      "Calcio di punizione diretto",
-      "Calcio d’angolo",
-      "Calcio di punizione indiretto"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 467,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Fuorigioco",
-      "Rimessa irregolare",
-      "Ostruzione senza contatto",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 468,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio di punizione diretto",
-      "Calcio di punizione indiretto",
-      "Rimessa dal fondo",
-      "Calcio d’angolo"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 469,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Rimessa irregolare",
-      "Fuorigioco",
-      "Ostruzione senza contatto",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 470,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Ostruzione senza contatto",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Fuorigioco",
-      "Rimessa irregolare"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 471,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Ostruzione senza contatto",
-      "Fuorigioco",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Rimessa irregolare"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 472,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando l’arbitro fischia",
-      "Quando è calciato e chiaramente si muove",
-      "Quando tocca un compagno",
-      "Solo quando esce dall’area"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 473,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando è calciato e chiaramente si muove",
-      "Solo quando esce dall’area",
-      "Quando tocca un compagno",
-      "Quando l’arbitro fischia"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 474,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio d’angolo",
-      "Rimessa dal fondo",
-      "Calcio di punizione diretto",
-      "Calcio di punizione indiretto"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 475,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando tocca un compagno",
-      "Solo quando esce dall’area",
-      "Quando è calciato e chiaramente si muove",
-      "Quando l’arbitro fischia"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 476,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Fuorigioco",
-      "Rimessa irregolare",
-      "Ostruzione senza contatto",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 477,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando è calciato e chiaramente si muove",
-      "Quando tocca un compagno",
-      "Solo quando esce dall’area",
-      "Quando l’arbitro fischia"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 478,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando l’arbitro fischia",
-      "Quando tocca un compagno",
-      "Quando è calciato e chiaramente si muove",
-      "Solo quando esce dall’area"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 479,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando è calciato e chiaramente si muove",
-      "Quando tocca un compagno",
-      "Quando l’arbitro fischia",
-      "Solo quando esce dall’area"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 480,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Fuorigioco",
-      "Rimessa irregolare",
-      "Ostruzione senza contatto"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 481,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Ostruzione senza contatto",
-      "Fuorigioco",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Rimessa irregolare"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 482,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Ostruzione senza contatto",
-      "Fuorigioco",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Rimessa irregolare"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 483,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Ostruzione senza contatto",
-      "Fuorigioco",
-      "Rimessa irregolare"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 484,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Fuorigioco",
-      "Rimessa irregolare",
-      "Ostruzione senza contatto"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 485,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Rimessa irregolare",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Ostruzione senza contatto",
-      "Fuorigioco"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 486,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Ostruzione senza contatto",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Rimessa irregolare",
-      "Fuorigioco"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 487,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio di punizione indiretto",
-      "Calcio d’angolo",
-      "Rimessa dal fondo",
-      "Calcio di punizione diretto"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 488,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Solo quando esce dall’area",
-      "Quando l’arbitro fischia",
-      "Quando tocca un compagno",
-      "Quando è calciato e chiaramente si muove"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 489,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Fuorigioco",
-      "Ostruzione senza contatto",
-      "Rimessa irregolare",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 490,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando l’arbitro fischia",
-      "Solo quando esce dall’area",
-      "Quando è calciato e chiaramente si muove",
-      "Quando tocca un compagno"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 491,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Solo quando esce dall’area",
-      "Quando è calciato e chiaramente si muove",
-      "Quando tocca un compagno",
-      "Quando l’arbitro fischia"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 492,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Rimessa irregolare",
-      "Fuorigioco",
-      "Ostruzione senza contatto",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 493,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando l’arbitro fischia",
-      "Quando è calciato e chiaramente si muove",
-      "Quando tocca un compagno",
-      "Solo quando esce dall’area"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 494,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Rimessa dal fondo",
-      "Calcio di punizione indiretto",
-      "Calcio di punizione diretto",
-      "Calcio d’angolo"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 495,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Il fuorigioco è punito con:",
-    "choices": [
-      "Calcio di punizione diretto",
-      "Calcio d’angolo",
-      "Calcio di punizione indiretto",
-      "Rimessa dal fondo"
-    ],
-    "answerIndex": 2,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 496,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Rimessa irregolare",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)",
-      "Ostruzione senza contatto",
-      "Fuorigioco"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 497,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Ostruzione senza contatto",
-      "Rimessa irregolare",
-      "Fuorigioco",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 498,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quale fallo in area comporta rigore?",
-    "choices": [
-      "Fuorigioco",
-      "Ostruzione senza contatto",
-      "Rimessa irregolare",
-      "Un fallo punibile con calcio diretto (es. trattenuta/spinta/mani punibili)"
-    ],
-    "answerIndex": 3,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 499,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando è calciato e chiaramente si muove",
-      "Solo quando esce dall’area",
-      "Quando l’arbitro fischia",
-      "Quando tocca un compagno"
-    ],
-    "answerIndex": 0,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
-  },
-  {
-    "id": 500,
-    "difficulty": 10,
-    "category": "Regole",
-    "question": "Quando il pallone è in gioco su una rimessa dal fondo?",
-    "choices": [
-      "Quando tocca un compagno",
-      "Quando è calciato e chiaramente si muove",
-      "Solo quando esce dall’area",
-      "Quando l’arbitro fischia"
-    ],
-    "answerIndex": 1,
-    "source": "https://www.theifab.com/laws-of-the-game/",
-    "tags": [
-      "regole",
-      "appassionati"
-    ]
+    "correctIndex": 1,
+    "difficulty": 10
   }
 ];
-
-export default QUESTIONS;
-// Se serve in globale: if (typeof window !== 'undefined') window.QUESTIONS = QUESTIONS;
